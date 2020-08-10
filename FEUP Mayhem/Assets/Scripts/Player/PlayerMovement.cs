@@ -22,14 +22,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Jump
         if (Input.GetButtonDown(specs.JumpButtonName()) && canJump)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
         }
 
+        // Horizontal Movement
         float horMove = Input.GetAxis(specs.HorizontalAxisName());
-        if(horMove < 0)
+        
+        // Flip character to the left or right
+        if (horMove < 0)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
@@ -38,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
             transform.eulerAngles = Vector3.zero;
         }
 
-
         rb.velocity = new Vector2(horMove * moveSpeed * Time.deltaTime, rb.velocity.y);
     }
 
@@ -46,8 +49,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Collider2D col = collision.collider;
 
+        // Detect collisions with the floor
         if(col.tag == "Floor")
         {
+            // If the character touched the floor, it can jump again
             canJump = true;
         }
     }

@@ -167,9 +167,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 282925066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15286a9f5b48d14a827cf202ab00d78, type: 3}
+  m_Script: {fileID: 11500000, guid: be7f8235592b4a240b83d6b572093f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireButton: Fire1
+  jumpButton: Jump1
+  horizontalAxis: Horizontal1
 --- !u!4 &282925069
 Transform:
   m_ObjectHideFlags: 0
