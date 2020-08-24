@@ -1914,7 +1914,7 @@ GameObject:
   - component: {fileID: 1979390589}
   - component: {fileID: 1979390588}
   m_Layer: 0
-  m_Name: Settings Maneger
+  m_Name: Settings Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
