@@ -2,13 +2,14 @@
 
 [RequireComponent(typeof(PlayerSpecs))]
 [RequireComponent(typeof(Rigidbody2D))]
-
+[RequireComponent(typeof(Collider2D))]
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerSpecs specs;
     private Rigidbody2D rb;
+    private new Collider2D collider;
 
-    private bool canJump = true;
+    private bool canJump = true, onPlatform = false;
 
     [SerializeField]
     private float jumpForce = 7.5f, moveSpeed = 100;
@@ -18,15 +19,26 @@ public class PlayerMovement : MonoBehaviour
     {
         specs = GetComponent<PlayerSpecs>();
         rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // Jump
-        if (Input.GetButtonDown(specs.JumpButtonName()) && canJump)
+        if (Input.GetButtonDown(specs.JumpButtonName()))
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-            canJump = false;
+            if (canJump)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+                canJump = false;
+            } //TODO else double jump
+
+        }else if (Input.GetButtonDown(specs.JumpDownName()))
+        {
+            if (onPlatform)
+            {
+                collider.isTrigger = true;
+            }
         }
 
         // Horizontal Movement
@@ -49,11 +61,27 @@ public class PlayerMovement : MonoBehaviour
     {
         Collider2D col = collision.collider;
 
-        // Detect collisions with the floor
-        if(col.tag == "Floor")
+        // Detect collisions with the floor 
+        if(col.CompareTag("Floor"))
         {
             // If the character touched the floor, it can jump again
             canJump = true;
+        }
+        else if (col.CompareTag("Platform"))
+        {
+            onPlatform = true;
+
+            // If the character touched a platform, it can jump again
+            canJump = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Platform"))
+        {
+            onPlatform = false;
+            collider.isTrigger = false;
         }
     }
 }
