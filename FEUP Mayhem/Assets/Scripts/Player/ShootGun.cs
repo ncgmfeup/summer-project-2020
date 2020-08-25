@@ -18,7 +18,7 @@ public class ShootGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateUsedGun(currentGunScript != null);
     }
 
     // Update is called once per frame
@@ -33,6 +33,30 @@ public class ShootGun : MonoBehaviour
                 currentGunScript.ShootBullet();
                 currentGunScript.ResetCd();
             }
+        }
+        else
+        {
+            defaultGunScript.AddGunCd(-Time.deltaTime);
+            bool autoFire = defaultGunScript.GetAutoFire();
+            if (((!autoFire && Input.GetKeyDown(inputString)) || (autoFire && Input.GetKey(inputString))) && defaultGunScript.GetGunCd() <= 0f)
+            {
+                defaultGunScript.ShootBullet();
+                defaultGunScript.ResetCd();
+                UpdateUsedGun(false);
+            }
+        }
+    }
+
+    public void UpdateUsedGun(bool hasSpecialGun)
+    {
+        if (hasSpecialGun)
+        {
+            defaultGunScript.gameObject.SetActive(false);
+            currentGunScript.gameObject.SetActive(true);
+        }
+        else
+        {
+            defaultGunScript.gameObject.SetActive(true);
         }
     }
 

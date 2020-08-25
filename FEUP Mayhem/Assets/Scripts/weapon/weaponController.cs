@@ -44,6 +44,9 @@ public class weaponController : MonoBehaviour
     int numClips = 10;
     int remainingClips;
 
+    [SerializeField]
+    Vector3 GunOffset = Vector2.zero;
+
     //--
 
     public Transform weaponTransform;
@@ -98,7 +101,7 @@ public class weaponController : MonoBehaviour
     public void ShootBullet()
     {
         GameObject thisBullet;
-        thisBullet = Instantiate(bulletPrefab, weaponTransform.position, weaponTransform.rotation);
+        thisBullet = Instantiate(bulletPrefab, weaponTransform.position + GunOffset, weaponTransform.rotation);
         thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
         Destroy(thisBullet, bulletLifespan);
     }
