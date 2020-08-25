@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private new Collider2D collider;
 
-    private bool canJump = true, onPlatform = false;
+    private bool canJump = true, doubleJump = true, onPlatform = false;
 
     [SerializeField]
     private float jumpForce = 7.5f, moveSpeed = 100;
@@ -31,9 +31,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
                 canJump = false;
-            } //TODO else double jump
+            }
+            else if (doubleJump)
+            {
+                rb.AddForce(Vector3.up * jumpForce/2f, ForceMode2D.Impulse);
+                doubleJump = false;
+            }
 
-        }else if (Input.GetButtonDown(specs.JumpDownName()))
+        }
+        else if (Input.GetButtonDown(specs.JumpDownName()))
         {
             if (onPlatform)
             {
@@ -65,14 +71,27 @@ public class PlayerMovement : MonoBehaviour
         if(col.CompareTag("Floor"))
         {
             // If the character touched the floor, it can jump again
-            canJump = true;
+            ResetJumpValues();
         }
         else if (col.CompareTag("Platform"))
         {
             onPlatform = true;
 
             // If the character touched a platform, it can jump again
-            canJump = true;
+            ResetJumpValues();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Platform"))
+        {
+            onPlatform = true;
+            collider.isTrigger = false;
+        }else if(collision.CompareTag("Floor"))
+        {
+            collider.isTrigger = false;
+            ResetJumpValues();
         }
     }
 
@@ -83,5 +102,11 @@ public class PlayerMovement : MonoBehaviour
             onPlatform = false;
             collider.isTrigger = false;
         }
+    }
+
+    private void ResetJumpValues()
+    {
+        canJump = true;
+        doubleJump = true;
     }
 }
