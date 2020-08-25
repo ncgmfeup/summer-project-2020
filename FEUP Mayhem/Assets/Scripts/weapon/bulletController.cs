@@ -6,7 +6,8 @@ public class bulletController : MonoBehaviour
 {
 
     private Rigidbody2D bulletRB;
-    public float bulletForce;
+    float bulletForce;
+
 
     // Start is called before the first frame update
     void Start()
@@ -14,12 +15,17 @@ public class bulletController : MonoBehaviour
         bulletRB = this.GetComponent<Rigidbody2D>();
         bulletRB.gravityScale = 0;
         bulletRB.AddForce(transform.right * bulletForce);
-        Destroy(this.gameObject, 10f);
+        //Destroy(this.gameObject, 10f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("collided");
         Destroy(this.gameObject);
+    }
+
+    public void SetBulletForce(float bulletForce)
+    {
+        this.bulletForce = bulletForce;
     }
 }
