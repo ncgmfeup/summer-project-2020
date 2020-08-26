@@ -30,8 +30,14 @@ public class ShootGun : MonoBehaviour
             bool autoFire = currentGunScript.GetAutoFire();
             if (((!autoFire && Input.GetKeyDown(inputString)) || (autoFire && Input.GetKey(inputString))) && currentGunScript.GetGunCd() <= 0f)
             {
+                bool result;
                 currentGunScript.ShootBullet();
-                currentGunScript.ResetCd();
+                result = currentGunScript.ResetCd();
+                if (!result)
+                {
+                    defaultGunScript.SetCurrentCd(currentGunScript.GetMaxCd());
+                    UpdateUsedGun(false);
+                }
             }
         }
         else
@@ -42,7 +48,6 @@ public class ShootGun : MonoBehaviour
             {
                 defaultGunScript.ShootBullet();
                 defaultGunScript.ResetCd();
-                UpdateUsedGun(false);
             }
         }
     }
@@ -57,6 +62,10 @@ public class ShootGun : MonoBehaviour
         else
         {
             defaultGunScript.gameObject.SetActive(true);
+            if(currentGunScript != null)
+            {
+                Destroy(currentGunScript.gameObject);
+            }
         }
     }
 

@@ -72,7 +72,7 @@ public class weaponController : MonoBehaviour
         gunCd += time;
     }
     
-    public void ResetCd()
+    public bool ResetCd()
     {
         if(remainingAmmo > 1)
         {
@@ -88,10 +88,12 @@ public class weaponController : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                return false;
             }
         }
+        return true;
     }
+
 
     public float GetGunCd()
     {
@@ -104,5 +106,15 @@ public class weaponController : MonoBehaviour
         thisBullet = Instantiate(bulletPrefab, weaponTransform.position + GunOffset, weaponTransform.rotation);
         thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
         Destroy(thisBullet, bulletLifespan);
+    }
+
+    public void SetCurrentCd(float cd)
+    {
+        this.gunCd = cd;
+    }
+
+    public float GetMaxCd()
+    {
+        return maxGunCd;
     }
 }

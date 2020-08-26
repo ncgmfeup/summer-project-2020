@@ -560,7 +560,7 @@ MonoBehaviour:
   maxReloadCd: 2
   autoFire: 1
   clipSize: 10
-  numClips: 5
+  numClips: 1
   GunOffset: {x: 0.8461539, y: 0.25, z: 0}
   weaponTransform: {fileID: 232141994}
   bulletPrefab: {fileID: 3946667744556925657, guid: a608a40ea798a2840bae257901f9f053, type: 3}
@@ -2203,7 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856e2b01a6c4fd44c949f9ca272a1074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 500
+  bulletForce: 450
   bulletLifespan: 1.5
   maxGunCd: 0.5
   maxReloadCd: 2
