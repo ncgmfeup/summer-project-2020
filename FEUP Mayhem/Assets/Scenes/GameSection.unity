@@ -2063,6 +2063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebea51d5754e83046a070382b42c9dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dynamite: {fileID: 2912437476100689702, guid: e4ddf29a78964e0468a044961c6e4e77, type: 3}
   jumpForce: 7.5
   moveSpeed: 100
 --- !u!114 &1491470330

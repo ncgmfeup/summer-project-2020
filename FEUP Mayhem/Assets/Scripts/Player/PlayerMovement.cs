@@ -5,10 +5,13 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject Dynamite;
     private PlayerSpecs specs;
     private Rigidbody2D rb;
 
     private bool canJump = true;
+
+    private bool canUseDynamite = true;
 
     [SerializeField]
     private float jumpForce = 7.5f, moveSpeed = 100;
@@ -31,6 +34,12 @@ public class PlayerMovement : MonoBehaviour
 
         // Horizontal Movement
         float horMove = Input.GetAxis(specs.HorizontalAxisName());
+
+        if (Input.GetKey("1") && canUseDynamite){
+            Instantiate(Dynamite, transform.position, transform.rotation);
+            canUseDynamite = false;
+            Invoke("SetDynamiteTrue", 1);
+        }
         
         // Flip character to the left or right
         if (horMove < 0)
@@ -55,5 +64,9 @@ public class PlayerMovement : MonoBehaviour
             // If the character touched the floor, it can jump again
             canJump = true;
         }
+    }
+
+    public void SetDynamiteTrue(){
+        canUseDynamite = true;
     }
 }
