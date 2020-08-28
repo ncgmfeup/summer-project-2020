@@ -2224,6 +2224,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3946667744556925657, guid: a608a40ea798a2840bae257901f9f053, type: 3}
 --- !u!1 &1637448463
 GameObject:
+  Dynamite: {fileID: 2912437476100689702, guid: e4ddf29a78964e0468a044961c6e4e77, type: 3}
+  jumpForce: 7.5
+  moveSpeed: 100
+--- !u!114 &1491470330
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
