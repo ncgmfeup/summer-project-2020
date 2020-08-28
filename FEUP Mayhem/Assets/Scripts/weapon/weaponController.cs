@@ -65,7 +65,6 @@ public class weaponController : MonoBehaviour
         if (remainingAmmo > 1)
         {
             remainingAmmo--;
-            //gunCd = maxGunCd;
         }
         else
         {
@@ -73,7 +72,6 @@ public class weaponController : MonoBehaviour
             {
                 remainingAmmo = clipSize;
                 remainingClips--;
-                //gunCd = maxReloadCd;
             }
             else
             {
@@ -95,5 +93,15 @@ public class weaponController : MonoBehaviour
     public float GetMaxCd()
     {
         return maxGunCd;
+    }
+
+    public float GetMaxReloadCd()
+    {
+        return maxReloadCd;
+    }
+
+    public int GetAmmo()
+    {
+        return remainingAmmo;
     }
 }

@@ -43,7 +43,14 @@ public class ShootGun : MonoBehaviour
         {
             bool result;
             gunScript.ShootBullet();
-            currentGunCd = gunScript.GetMaxCd();
+            if (gunScript.GetAmmo() == 1)
+            {
+                currentGunCd = gunScript.GetMaxReloadCd();
+            }
+            else
+            {
+                currentGunCd = gunScript.GetMaxCd();
+            }
 
             if (gunScript)
             {
