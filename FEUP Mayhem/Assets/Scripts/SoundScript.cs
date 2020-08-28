@@ -30,14 +30,15 @@ public class SoundScript : MonoBehaviour
         UpdateVolume();
     }
 
-    void UpdateVolume(){
+    void UpdateIcon(){
         if(PlayerPrefs.GetInt("Muted", 0) == 0)
             AudioListener.volume = 1;
         else
             AudioListener.volume = 0;
     }
 
-    void UpdateIcon(){
+    
+    void UpdateVolume(){
         if(PlayerPrefs.GetInt("Muted", 0) == 0)
             musicToggleButton.GetComponent<Image>().sprite = musicOnSprite;
         else
