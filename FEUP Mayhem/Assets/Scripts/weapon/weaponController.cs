@@ -104,4 +104,14 @@ public class weaponController : MonoBehaviour
     {
         return remainingAmmo;
     }
+
+    public int GetClipSize()
+    {
+        return clipSize;
+    }
+
+    public int GetNumClips()
+    {
+        return numClips;
+    }
 }

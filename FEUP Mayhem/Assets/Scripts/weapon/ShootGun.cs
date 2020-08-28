@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class ShootingEvent : UnityEvent<int, int, int, bool>
+{
+}
 
 public class ShootGun : MonoBehaviour
 {
+
+    public ShootingEvent onShootingEvent;
+
     //Gun related
     [SerializeField]
     weaponController defaultGunScript;
@@ -54,14 +63,18 @@ public class ShootGun : MonoBehaviour
 
             if (gunScript)
             {
-
-                if (gunScript != defaultGunScript)
+                result = gunScript.SubtractAmmo();
+                if (!result)
                 {
-                    result = gunScript.SubtractAmmo();
-                    if (!result)
-                    {
-                        Destroy(gunScript.gameObject);
-                    }
+                    Destroy(gunScript.gameObject);
+                }
+                weaponController temp = getCorrectGunScript();
+                if (temp == defaultGunScript)
+                {
+                    onShootingEvent.Invoke(temp.GetAmmo() % temp.GetClipSize(), temp.GetClipSize(), -1, autoFire);
+                }
+                else {
+                    onShootingEvent.Invoke(temp.GetAmmo() % temp.GetClipSize(), temp.GetClipSize(), temp.GetNumClips(), autoFire);
                 }
             }
         }
