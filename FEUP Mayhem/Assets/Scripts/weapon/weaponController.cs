@@ -30,7 +30,7 @@ public class weaponController : MonoBehaviour
     float maxGunCd = 0.5f;
     [SerializeField]
     float maxReloadCd = 2f;
-    float gunCd = 0f;
+    //float gunCd = 0f;
 
 
     [SerializeField]
@@ -67,36 +67,29 @@ public class weaponController : MonoBehaviour
         return autoFire;
     }
 
-    public void AddGunCd(float time)
+    public bool SubtractAmmo()
     {
-        gunCd += time;
-    }
-    
-    public void ResetCd()
-    {
-        if(remainingAmmo > 1)
+        if (remainingAmmo > 1)
         {
             remainingAmmo--;
-            gunCd = maxGunCd;
+            //gunCd = maxGunCd;
         }
         else
         {
-            if (remainingClips > 1) {
+            if (remainingClips > 1)
+            {
                 remainingAmmo = clipSize;
                 remainingClips--;
-                gunCd = maxReloadCd;
+                //gunCd = maxReloadCd;
             }
             else
             {
-                Destroy(gameObject);
+                return false;
             }
         }
+        return true;
     }
 
-    public float GetGunCd()
-    {
-        return gunCd;
-    }
 
     public void ShootBullet()
     {
@@ -104,5 +97,10 @@ public class weaponController : MonoBehaviour
         thisBullet = Instantiate(bulletPrefab, weaponTransform.position + GunOffset, weaponTransform.rotation);
         thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
         Destroy(thisBullet, bulletLifespan);
+    }
+
+    public float GetMaxCd()
+    {
+        return maxGunCd;
     }
 }

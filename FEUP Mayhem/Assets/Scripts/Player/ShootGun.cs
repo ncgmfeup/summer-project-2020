@@ -8,6 +8,10 @@ public class ShootGun : MonoBehaviour
     [SerializeField]
     weaponController defaultGunScript;
     public weaponController currentGunScript;
+
+
+    //Last frame's gun controller (failsafe for picking up guns)
+    weaponController gunScriptLastFrame;
     //---
 
     //Input related
@@ -15,36 +19,59 @@ public class ShootGun : MonoBehaviour
     string inputString = "space";
     //---
 
+
+    float currentGunCd = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        gunScriptLastFrame = getCorrectGunScript();
         UpdateUsedGun(currentGunScript != null);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentGunScript != null)
+        weaponController gunScript = getCorrectGunScript();
+
+        currentGunCd -= Time.deltaTime;
+        bool autoFire = gunScript.GetAutoFire();
+
+        
+
+        if (((!autoFire && Input.GetKeyDown(inputString)) || (autoFire && Input.GetKey(inputString))) && currentGunCd <= 0f)
         {
-            currentGunScript.AddGunCd(-Time.deltaTime);
-            bool autoFire = currentGunScript.GetAutoFire();
-            if (((!autoFire && Input.GetKeyDown(inputString)) || (autoFire && Input.GetKey(inputString))) && currentGunScript.GetGunCd() <= 0f)
+            bool result;
+            gunScript.ShootBullet();
+            currentGunCd = gunScript.GetMaxCd();
+
+            if (gunScript)
             {
-                currentGunScript.ShootBullet();
-                currentGunScript.ResetCd();
+
+                if (gunScript != defaultGunScript) {
+                    result = gunScript.SubtractAmmo();
+                    if (!result)
+                    {
+                        Destroy(gunScript.gameObject);
+                    }
+                }
             }
         }
-        else
+        
+
+        if (gunScript != gunScriptLastFrame)
         {
-            defaultGunScript.AddGunCd(-Time.deltaTime);
-            bool autoFire = defaultGunScript.GetAutoFire();
-            if (((!autoFire && Input.GetKeyDown(inputString)) || (autoFire && Input.GetKey(inputString))) && defaultGunScript.GetGunCd() <= 0f)
+            if (gunScript == defaultGunScript)
             {
-                defaultGunScript.ShootBullet();
-                defaultGunScript.ResetCd();
                 UpdateUsedGun(false);
             }
+            else
+            {
+                UpdateUsedGun(true);
+            }
         }
+        gunScriptLastFrame = getCorrectGunScript();
+        
     }
 
     public void UpdateUsedGun(bool hasSpecialGun)
@@ -57,6 +84,10 @@ public class ShootGun : MonoBehaviour
         else
         {
             defaultGunScript.gameObject.SetActive(true);
+            if(currentGunScript != null)
+            {
+                Destroy(currentGunScript.gameObject);
+            }
         }
     }
 
@@ -69,4 +100,10 @@ public class ShootGun : MonoBehaviour
     {
         return currentGunScript;
     }
+
+    public weaponController getCorrectGunScript()
+    {
+        return currentGunScript == null ? defaultGunScript : currentGunScript;
+    }
+
 }
