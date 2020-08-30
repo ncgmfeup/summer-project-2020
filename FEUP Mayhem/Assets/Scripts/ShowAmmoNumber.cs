@@ -20,9 +20,13 @@ public class ShowAmmoNumber : MonoBehaviour
         
     }
 
+    public void UpdateClipSize(int numBullets, int clipSize, int numClips, bool autofire)
+    {
+        textMeshPro.text = numClips.ToString();
+    }
+
     public void UpdateAmmoNumber(int numBullets, int clipSize, int numClips, bool autofire)
     {
         textMeshPro.text = numBullets.ToString();
-
     }
 }

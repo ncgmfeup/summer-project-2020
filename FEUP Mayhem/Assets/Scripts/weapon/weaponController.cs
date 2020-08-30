@@ -40,6 +40,10 @@ public class weaponController : MonoBehaviour
     [SerializeField]
     Vector3 GunOffset = Vector2.zero;
 
+    int shots_per_burst = 3;
+    int burst_max_angle = 20;
+
+
     //--
 
     public Transform weaponTransform;
