@@ -20,7 +20,7 @@ public class bulletController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("collided");
-        if (collision.tag == "Player")
+        /*if (collision.tag == "Player")
         {
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             float multiplier = collision.GetComponent<multiplier>();
@@ -28,7 +28,7 @@ public class bulletController : MonoBehaviour
                 multiplier += 0.02;
             rb.AddForce(new Vector2(multiplier*10f,1f), ForceMode2D.Impulse);
             Debug.Log("collided with enemy");
-        }
+        }*/
         Destroy(this.gameObject);
     }
 
