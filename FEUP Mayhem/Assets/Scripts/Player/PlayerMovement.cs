@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canUseDynamite = true;
 
     [SerializeField]
-    private float jumpForce = 7.5f, moveSpeed = 100;
+    private float jumpForce = 7.5f, moveSpeed = 100, doubleJumpMultiplier = 0.75f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (doubleJump)
             {
-                rb.AddForce(Vector3.up * jumpForce/2f, ForceMode2D.Impulse);
+                rb.velocity = new Vector2(rb.velocity.x, 0f);
+                rb.AddForce(Vector3.up * jumpForce * doubleJumpMultiplier, ForceMode2D.Impulse);
                 doubleJump = false;
             }
 
@@ -69,7 +70,15 @@ public class PlayerMovement : MonoBehaviour
             transform.eulerAngles = Vector3.zero;
         }
 
-        rb.velocity = new Vector2(horMove * moveSpeed * Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2(horMove * moveSpeed, rb.velocity.y);
+        if(rb.velocity.y < -0.0001f)
+        {
+            rb.gravityScale = 2.5f;
+        }
+        else
+        {
+            rb.gravityScale = 1.5f;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
