@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canUseDynamite = true;
 
+    private float multiplier = 0;
+
     [SerializeField]
     private float jumpForce = 7.5f, moveSpeed = 100, doubleJumpMultiplier = 0.75f;
 
