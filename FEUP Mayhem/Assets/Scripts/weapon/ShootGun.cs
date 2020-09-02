@@ -18,6 +18,11 @@ public class SwapWeaponEvent : UnityEvent<int, int, int, bool>
 {
 }
 
+[System.Serializable]
+public class OnStartEvent : UnityEvent<int, int, int, bool>
+{
+}
+
 public class ShootGun : MonoBehaviour
 {
 
@@ -26,6 +31,8 @@ public class ShootGun : MonoBehaviour
     public EndReloadEvent onEndReload;
 
     public SwapWeaponEvent onSwapWeapon;
+
+    public OnStartEvent onStart;
 
     //Gun related
     [SerializeField]
@@ -51,6 +58,11 @@ public class ShootGun : MonoBehaviour
     {
         gunScriptLastFrame = getCorrectGunScript();
         UpdateUsedGun(currentGunScript != null);
+
+        Debug.Log(gunScriptLastFrame);
+        Debug.Log(gunScriptLastFrame.GetAmmo());
+        Debug.Log(gunScriptLastFrame.GetRemainingClips());
+        onStart.Invoke(gunScriptLastFrame.GetAmmo(), gunScriptLastFrame.GetClipSize(), gunScriptLastFrame.GetRemainingClips(), gunScriptLastFrame.GetAutoFire());
     }
 
     // Update is called once per frame

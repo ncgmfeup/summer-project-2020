@@ -49,7 +49,7 @@ public class weaponController : MonoBehaviour
     public Transform weaponTransform;
     public GameObject bulletPrefab;
 
-    void Start()
+    void Awake()
     {
         remainingAmmo = clipSize;
         remainingClips = numClips;
