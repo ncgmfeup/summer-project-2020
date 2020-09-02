@@ -8,21 +8,12 @@ public class ShowAmmoNumber : MonoBehaviour
 {
     [SerializeField]
     TextMeshProUGUI textMeshPro;
-    // Start is called before the first frame update
-    void Start()
+    public void UpdateNumClips(int numBullets, int clipSize, int numClips, bool autofire)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateClipSize(int numBullets, int clipSize, int numClips, bool autofire)
-    {
-        textMeshPro.text = numClips.ToString();
+        if (numClips < 0)
+            textMeshPro.text = "∞";
+        else
+            textMeshPro.text = numClips.ToString();
     }
 
     public void UpdateAmmoNumber(int numBullets, int clipSize, int numClips, bool autofire)

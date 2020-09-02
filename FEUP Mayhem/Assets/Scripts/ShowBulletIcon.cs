@@ -29,9 +29,6 @@ public class ShowBulletIcon : MonoBehaviour
     {
         float percentage = (float) numBullets / (float) clipSize;
 
-        Debug.Log((int) (percentage * 5));
-        Debug.Log(img.sprite);
-
         int index = (int)(percentage * 6);
         if (index > 5) index = 5;
 

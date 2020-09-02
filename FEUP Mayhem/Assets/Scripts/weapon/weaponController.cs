@@ -77,9 +77,14 @@ public class weaponController : MonoBehaviour
                 remainingAmmo = clipSize;
                 remainingClips--;
             }
-            else
+            else if(remainingClips == 1 || remainingClips == 0)
             {
                 return false;
+            }
+            else if(remainingClips == -1)
+            {
+                remainingAmmo = clipSize;
+                return true;
             }
         }
         return true;
@@ -117,5 +122,10 @@ public class weaponController : MonoBehaviour
     public int GetNumClips()
     {
         return numClips;
+    }
+
+    public int GetRemainingClips()
+    {
+        return remainingClips;
     }
 }

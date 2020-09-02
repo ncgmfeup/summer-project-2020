@@ -8,10 +8,24 @@ public class ShootingEvent : UnityEvent<int, int, int, bool>
 {
 }
 
+[System.Serializable]
+public class EndReloadEvent : UnityEvent<int, int, int, bool>
+{
+}
+
+[System.Serializable]
+public class SwapWeaponEvent : UnityEvent<int, int, int, bool>
+{
+}
+
 public class ShootGun : MonoBehaviour
 {
 
     public ShootingEvent onShootingEvent;
+
+    public EndReloadEvent onEndReload;
+
+    public SwapWeaponEvent onSwapWeapon;
 
     //Gun related
     [SerializeField]
@@ -31,6 +45,7 @@ public class ShootGun : MonoBehaviour
 
     float currentGunCd = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +60,10 @@ public class ShootGun : MonoBehaviour
 
         currentGunCd -= Time.deltaTime;
         bool autoFire = gunScript.GetAutoFire();
+
+
+
+
 
 
 
@@ -74,25 +93,36 @@ public class ShootGun : MonoBehaviour
                     onShootingEvent.Invoke(temp.GetAmmo() % temp.GetClipSize(), temp.GetClipSize(), -1, autoFire);
                 }
                 else {
-                    onShootingEvent.Invoke(temp.GetAmmo() % temp.GetClipSize(), temp.GetClipSize(), temp.GetNumClips(), autoFire);
+                    onShootingEvent.Invoke(temp.GetAmmo() % temp.GetClipSize(), temp.GetClipSize(), temp.GetRemainingClips(), autoFire);
                 }
             }
         }
-
-
         if (gunScript != gunScriptLastFrame)
         {
+            weaponController temp = getCorrectGunScript();
             if (gunScript == defaultGunScript)
             {
                 UpdateUsedGun(false);
+                onSwapWeapon.Invoke(temp.GetAmmo(), temp.GetClipSize(), -1, temp.GetAutoFire());
             }
             else
             {
                 UpdateUsedGun(true);
+                onSwapWeapon.Invoke(temp.GetAmmo(), temp.GetClipSize(), temp.GetRemainingClips(), temp.GetAutoFire());
             }
         }
-        gunScriptLastFrame = getCorrectGunScript();
 
+
+        weaponController tmp = getCorrectGunScript();
+        //Debug.Log(tmp.GetRemainingClips());
+
+        //Debug.Log(currentGunCd > -Time.deltaTime && currentGunCd < 0f && tmp.GetAmmo() == 0);
+        if (currentGunCd > -Time.deltaTime && currentGunCd < 0f && tmp.GetAmmo() == tmp.GetClipSize())
+        {
+            onEndReload.Invoke(tmp.GetAmmo(), tmp.GetClipSize(), tmp.GetRemainingClips(), tmp.GetAutoFire());
+        }
+
+        gunScriptLastFrame = getCorrectGunScript();
     }
 
     public void UpdateUsedGun(bool hasSpecialGun)
