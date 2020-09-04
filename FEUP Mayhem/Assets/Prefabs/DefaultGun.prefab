@@ -44,14 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856e2b01a6c4fd44c949f9ca272a1074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 500
-  bulletLifespan: 1.5
+  bulletForce: 800
+  bulletLifespan: 0.2
   maxGunCd: 0.5
   maxReloadCd: 2
-  autoFire: 1
+  autoFire: 0
   clipSize: 5
   numClips: -1
   GunOffset: {x: 0.8461539, y: 0.2916667, z: 0}
+  shots_per_burst: 4
+  burst_max_angle: 15
   weaponTransform: {fileID: 7063227194065735871}
   bulletPrefab: {fileID: 3946667744556925657, guid: a608a40ea798a2840bae257901f9f053, type: 3}
 --- !u!212 &7063227194065735870

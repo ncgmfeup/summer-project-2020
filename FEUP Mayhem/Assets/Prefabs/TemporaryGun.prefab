@@ -112,6 +112,8 @@ MonoBehaviour:
   clipSize: 8
   numClips: 5
   GunOffset: {x: 0.8461539, y: 0.25, z: 0}
+  shots_per_burst: 1
+  burst_max_angle: 0
   weaponTransform: {fileID: 5881736596301223078}
   bulletPrefab: {fileID: 3946667744556925657, guid: a608a40ea798a2840bae257901f9f053, type: 3}
 --- !u!212 &5881736596301223072

@@ -40,7 +40,9 @@ public class weaponController : MonoBehaviour
     [SerializeField]
     Vector3 GunOffset = Vector2.zero;
 
-    int shots_per_burst = 3;
+    [SerializeField]
+    int shots_per_burst = 1;
+    [SerializeField]
     int burst_max_angle = 20;
 
 
@@ -93,17 +95,45 @@ public class weaponController : MonoBehaviour
 
     public void ShootBullet()
     {
-        GameObject thisBullet;
-        if (transform.rotation.eulerAngles.y >= 179.9f)
+
+        if (shots_per_burst == 1)
         {
-            thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(-GunOffset.x, GunOffset.y, GunOffset.z), weaponTransform.rotation);
+            GameObject thisBullet;
+            if (transform.rotation.eulerAngles.y >= 179.9f)
+            {
+                thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(-GunOffset.x, GunOffset.y, GunOffset.z), weaponTransform.rotation);
+            }
+            else
+            {
+                thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(GunOffset.x, GunOffset.y, GunOffset.z), weaponTransform.rotation);
+            }
+            thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
+            Destroy(thisBullet, bulletLifespan);
         }
         else
         {
-            thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(GunOffset.x, GunOffset.y, GunOffset.z), weaponTransform.rotation);
+            GameObject thisBullet;
+            Quaternion gunRotation;
+
+            float angle;
+
+            for (int i = 0; i < shots_per_burst; i++){
+                angle = -burst_max_angle + (burst_max_angle * 2f / ((float)(shots_per_burst - 1)) * ((float) i));
+                gunRotation = weaponTransform.rotation;
+                gunRotation = (Quaternion.Euler(gunRotation.eulerAngles.x, gunRotation.eulerAngles.y, gunRotation.eulerAngles.z + angle));
+                if (transform.rotation.eulerAngles.y >= 179.9f)
+                {
+                    thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(-GunOffset.x, GunOffset.y, GunOffset.z), gunRotation);
+                }
+                else
+                {
+                    thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(GunOffset.x, GunOffset.y, GunOffset.z), gunRotation);
+                }
+                thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
+                Destroy(thisBullet, bulletLifespan);
+            }
         }
-        thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
-        Destroy(thisBullet, bulletLifespan);
+
     }
 
     public float GetMaxCd()
