@@ -94,7 +94,14 @@ public class weaponController : MonoBehaviour
     public void ShootBullet()
     {
         GameObject thisBullet;
-        thisBullet = Instantiate(bulletPrefab, weaponTransform.position + GunOffset, weaponTransform.rotation);
+        if (transform.rotation.eulerAngles.y >= 179.9f)
+        {
+            thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(-GunOffset.x, GunOffset.y, GunOffset.z), weaponTransform.rotation);
+        }
+        else
+        {
+            thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(GunOffset.x, GunOffset.y, GunOffset.z), weaponTransform.rotation);
+        }
         thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
         Destroy(thisBullet, bulletLifespan);
     }

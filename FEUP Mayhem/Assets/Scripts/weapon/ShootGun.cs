@@ -59,9 +59,6 @@ public class ShootGun : MonoBehaviour
         gunScriptLastFrame = getCorrectGunScript();
         UpdateUsedGun(currentGunScript != null);
 
-        Debug.Log(gunScriptLastFrame);
-        Debug.Log(gunScriptLastFrame.GetAmmo());
-        Debug.Log(gunScriptLastFrame.GetRemainingClips());
         onStart.Invoke(gunScriptLastFrame.GetAmmo(), gunScriptLastFrame.GetClipSize(), gunScriptLastFrame.GetRemainingClips(), gunScriptLastFrame.GetAutoFire());
     }
 
@@ -115,12 +112,12 @@ public class ShootGun : MonoBehaviour
             if (gunScript == defaultGunScript)
             {
                 UpdateUsedGun(false);
-                onSwapWeapon.Invoke(temp.GetAmmo(), temp.GetClipSize(), -1, temp.GetAutoFire());
+                //onSwapWeapon.Invoke(temp.GetAmmo(), temp.GetClipSize(), -1, temp.GetAutoFire());
             }
             else
             {
                 UpdateUsedGun(true);
-                onSwapWeapon.Invoke(temp.GetAmmo(), temp.GetClipSize(), temp.GetRemainingClips(), temp.GetAutoFire());
+                //onSwapWeapon.Invoke(temp.GetAmmo(), temp.GetClipSize(), temp.GetRemainingClips(), temp.GetAutoFire());
             }
         }
 
@@ -152,6 +149,8 @@ public class ShootGun : MonoBehaviour
                 Destroy(currentGunScript.gameObject);
             }
         }
+        weaponController temp = getCorrectGunScript();
+        onSwapWeapon.Invoke(temp.GetAmmo(), temp.GetClipSize(), temp.GetRemainingClips(), temp.GetAutoFire());
     }
 
     public void setGunScript(weaponController gun)
@@ -169,4 +168,5 @@ public class ShootGun : MonoBehaviour
         return currentGunScript == null ? defaultGunScript : currentGunScript;
     }
 
+    
 }

@@ -51,7 +51,7 @@ MonoBehaviour:
   autoFire: 1
   clipSize: 5
   numClips: -1
-  GunOffset: {x: 0.8461539, y: 0.25, z: 0}
+  GunOffset: {x: 0.8461539, y: 0.2916667, z: 0}
   weaponTransform: {fileID: 7063227194065735871}
   bulletPrefab: {fileID: 3946667744556925657, guid: a608a40ea798a2840bae257901f9f053, type: 3}
 --- !u!212 &7063227194065735870
@@ -99,7 +99,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 1.3333334}
+  m_Size: {x: 0.24, y: 0.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

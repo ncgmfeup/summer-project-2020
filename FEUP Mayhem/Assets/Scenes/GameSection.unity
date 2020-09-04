@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 14432776}
   - component: {fileID: 14432775}
   - component: {fileID: 14432774}
+  - component: {fileID: 14432778}
   m_Layer: 0
   m_Name: CheckLeft
   m_TagString: Untagged
@@ -235,6 +236,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14432772}
   m_CullTransparentMesh: 0
+--- !u!114 &14432778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14432772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76a32377aa6329468bb599e9aca38d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &28112980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,6 +1576,7 @@ GameObject:
   - component: {fileID: 1283745521}
   - component: {fileID: 1283745520}
   - component: {fileID: 1283745519}
+  - component: {fileID: 1283745523}
   m_Layer: 0
   m_Name: CheckRight
   m_TagString: Untagged
@@ -1662,6 +1676,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283745517}
   m_CullTransparentMesh: 0
+--- !u!114 &1283745523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283745517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76a32377aa6329468bb599e9aca38d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1290908636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,6 +2257,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 14432778}
+        m_TargetAssemblyTypeName: SetAutoFire, Assembly-CSharp
+        m_MethodName: SetTrueAutofire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1707311146}
+        m_TargetAssemblyTypeName: SetAutoFire, Assembly-CSharp
+        m_MethodName: SetFalseAutofire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onStart:
     m_PersistentCalls:
       m_Calls:
@@ -2261,6 +2311,30 @@ MonoBehaviour:
       - m_Target: {fileID: 2110842711}
         m_TargetAssemblyTypeName: ShowAmmoNumber, Assembly-CSharp
         m_MethodName: UpdateNumClips
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 14432778}
+        m_TargetAssemblyTypeName: SetAutoFire, Assembly-CSharp
+        m_MethodName: SetTrueAutofire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1707311146}
+        m_TargetAssemblyTypeName: SetAutoFire, Assembly-CSharp
+        m_MethodName: SetFalseAutofire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2601,6 +2675,7 @@ GameObject:
   - component: {fileID: 1707311144}
   - component: {fileID: 1707311143}
   - component: {fileID: 1707311142}
+  - component: {fileID: 1707311146}
   m_Layer: 0
   m_Name: CrossLeft
   m_TagString: Untagged
@@ -2700,6 +2775,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707311140}
   m_CullTransparentMesh: 0
+--- !u!114 &1707311146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707311140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76a32377aa6329468bb599e9aca38d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1747854499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,6 +2993,7 @@ GameObject:
   - component: {fileID: 1800372935}
   - component: {fileID: 1800372934}
   - component: {fileID: 1800372933}
+  - component: {fileID: 1800372937}
   m_Layer: 0
   m_Name: CrossRight
   m_TagString: Untagged
@@ -3005,6 +3093,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800372931}
   m_CullTransparentMesh: 0
+--- !u!114 &1800372937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800372931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76a32377aa6329468bb599e9aca38d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1825399424
 GameObject:
   m_ObjectHideFlags: 0

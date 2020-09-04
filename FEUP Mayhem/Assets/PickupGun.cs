@@ -25,6 +25,7 @@ public class PickupGun : MonoBehaviour
                 transform.localPosition = Vector3.zero;
                 transform.localRotation = Quaternion.Euler(Vector3.zero);
                 collision.gameObject.GetComponent<ShootGun>().setGunScript(gameObject.GetComponent<weaponController>());
+                transform.parent.gameObject.GetComponent<ShootGun>().UpdateUsedGun(true);
                 Destroy(gameObject.transform.GetChild(0).gameObject);
                 Destroy(gameObject.GetComponent<EdgeCollider2D>());
                 Destroy(gameObject.GetComponent<Rigidbody2D>());

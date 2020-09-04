@@ -20,4 +20,6 @@ public class ShowAmmoNumber : MonoBehaviour
     {
         textMeshPro.text = numBullets.ToString();
     }
+
+
 }
