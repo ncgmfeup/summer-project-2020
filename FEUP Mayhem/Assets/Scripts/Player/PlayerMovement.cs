@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private double multiplier = 0.01;
     private new Collider2D collider;
 
+
     private bool canJump = true, doubleJump = true, onPlatform = false;
 
     private bool canUseDynamite = true;
@@ -21,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float jumpForce = 7.5f, moveSpeed = 100, doubleJumpMultiplier = 0.75f;
 
+    [SerializeField]
+    float smoothTime = 0.05f;
+
+    Vector2 vel = Vector2.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetButtonDown(specs.JumpDownName()))
         {
+            //rb.AddForce(new Vector2(250f, 300f));
             if (onPlatform)
             {
                 collider.isTrigger = true;
@@ -75,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             transform.eulerAngles = Vector3.zero;
         }
 
-        rb.velocity = new Vector2(horMove * moveSpeed, rb.velocity.y);
+        rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), ref vel, smoothTime);
         if(rb.velocity.y < -0.0001f)
         {
             rb.gravityScale = 2.5f;
