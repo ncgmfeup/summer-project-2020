@@ -2,30 +2,14 @@
 
 public class PlayerSpecs : MonoBehaviour
 {
+    [SerializeField]
     private string fireButton = "Fire1";
+    [SerializeField]
     private string jumpButton = "Jump1";
+    [SerializeField]
     private string jumpDownButton = "JumpDown1";
+    [SerializeField]
     private string horizontalAxis = "Horizontal1";
-
-    public void SetFireButtonName(string fire)
-    {
-        fireButton = fire;
-    }
-
-    public void SetJumpButtonName(string jump)
-    {
-        jumpButton = jump;
-    }
-
-    public void SetHorizontalAxisName(string horizontal)
-    {
-        horizontalAxis = horizontal;
-    }
-
-    public void SetJumpDownButtonName(string jumpDown)
-    {
-        jumpDownButton = jumpDown;
-    }
 
     public string FireButtonName()
     {
