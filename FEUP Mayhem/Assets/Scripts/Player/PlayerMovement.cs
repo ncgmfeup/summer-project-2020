@@ -1,20 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerSpecs))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Double))]
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject Dynamite;
     private PlayerSpecs specs;
     private Rigidbody2D rb;
+    private double multiplier = 0.01;
     private new Collider2D collider;
 
     private bool canJump = true, doubleJump = true, onPlatform = false;
 
     private bool canUseDynamite = true;
 
-    //private float multiplier = 0;
 
     [SerializeField]
     private float jumpForce = 7.5f, moveSpeed = 100, doubleJumpMultiplier = 0.75f;
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         specs = GetComponent<PlayerSpecs>();
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        multiplier = 0.01;
     }
 
     private void Update()
@@ -122,6 +125,16 @@ public class PlayerMovement : MonoBehaviour
             onPlatform = false;
             collider.isTrigger = false;
         }
+    }
+
+    public double GetMultiplier()
+    {
+        return multiplier;
+    }
+
+    public void IncreaseMultiplier(double inc)
+    {
+        multiplier += inc;
     }
 
     private void ResetJumpValues()
