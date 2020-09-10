@@ -1626,6 +1626,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7f8235592b4a240b83d6b572093f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireButton: Fire2
+  jumpButton: Jump2
+  jumpDownButton: JumpDown2
+  horizontalAxis: Horizontal2
 --- !u!4 &849316559
 Transform:
   m_ObjectHideFlags: 0
@@ -3082,6 +3086,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7f8235592b4a240b83d6b572093f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireButton: Fire1
+  jumpButton: Jump1
+  jumpDownButton: JumpDown1
+  horizontalAxis: Horizontal1
 --- !u!4 &1491470331
 Transform:
   m_ObjectHideFlags: 0

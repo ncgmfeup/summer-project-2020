@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetButtonDown(specs.JumpDownName()))
         {
-            //rb.AddForce(new Vector2(250f, 300f));
             if (onPlatform)
             {
                 collider.isTrigger = true;
@@ -117,7 +116,9 @@ public class PlayerMovement : MonoBehaviour
         {
             onPlatform = true;
             collider.isTrigger = false;
-        }else if(collision.CompareTag("Floor"))
+            ResetJumpValues();
+        }
+        else if(collision.CompareTag("Floor"))
         {
             collider.isTrigger = false;
             ResetJumpValues();
