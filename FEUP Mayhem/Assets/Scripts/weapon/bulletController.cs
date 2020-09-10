@@ -32,8 +32,8 @@ public class bulletController : MonoBehaviour
                 double multiplier = collision.GetComponent<PlayerMovement>().GetMultiplier();
                 if (multiplier < 1)
                     collision.GetComponent<PlayerMovement>().IncreaseMultiplier(0.03);
-                rb.AddForce(new Vector2((float)(multiplier * 10000000f), 2f), ForceMode2D.Impulse);
-                Debug.Log("moved (" + ((float)(multiplier * 10000000f)).ToString() + ", 1)");
+                rb.AddForce(new Vector2((float)(multiplier * 10f), 2f), ForceMode2D.Impulse);
+                Debug.Log("moved (" + ((float)(multiplier * 10f)).ToString() + ", 1)");
                 Destroy(this.gameObject);
             }
         }
