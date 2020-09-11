@@ -30,10 +30,10 @@ public class bulletController : MonoBehaviour
                 {
                     Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
                     double multiplier = collision.GetComponent<PlayerMovement>().GetMultiplier();
-                    if (multiplier < 1)
-                        collision.GetComponent<PlayerMovement>().IncreaseMultiplier(0.03);
+                    if (multiplier < 3)
+                        collision.GetComponent<PlayerMovement>().IncreaseMultiplier(0.02);
                     if(transform.rotation.eulerAngles.y < -90f || transform.rotation.eulerAngles.y > 90f) {
-                        rb.AddForce(new Vector2(-(float)(multiplier * 10f), 2f), ForceMode2D.Impulse);
+                        rb.AddForce(new Vector2(-(float)(multiplier * 15f), 2f), ForceMode2D.Impulse);
                     }
                     else
                     {

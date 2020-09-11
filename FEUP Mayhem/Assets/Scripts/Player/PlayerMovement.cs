@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Dynamite;
     private PlayerSpecs specs;
     private Rigidbody2D rb;
-    private double multiplier = 0.01;
+    [SerializeField]
+    private double multiplier = 0.2;
     private new Collider2D collider;
 
 
@@ -22,8 +23,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float jumpForce = 7.5f, moveSpeed = 100, doubleJumpMultiplier = 0.75f;
 
+    /*
     [SerializeField]
     float smoothTime = 0.05f;
+    [SerializeField]
+    float smoothTimeHighSpeed = 0.025f;
+    */
 
     Vector2 vel = Vector2.zero;
     float n = 1;
@@ -33,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 topRight;
 
     BoxCollider2D playerCol;
+
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +110,21 @@ public class PlayerMovement : MonoBehaviour
             transform.eulerAngles = Vector3.zero;
         }
 
-        rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), ref vel, smoothTime);
+        if (rb.velocity.x < moveSpeed)
+        {
+            rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 60f);
+
+        // rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 60f);
+        //rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), ref vel, smoothTime);
+        }
+        else
+        {
+            rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 30f);
+
+            //rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed * Time.deltaTime, rb.velocity.y), moveSpeed * Time.deltaTime);
+            //  Debug.Log("A");
+            //rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), ref vel, smoothTimeHighSpeed);
+        }
         if (rb.velocity.y < -0.0001f)
         {
             rb.gravityScale = 2.5f;
