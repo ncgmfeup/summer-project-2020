@@ -2728,6 +2728,7 @@ GameObject:
   - component: {fileID: 1523391896}
   - component: {fileID: 1523391895}
   - component: {fileID: 1523391894}
+  - component: {fileID: 1523391892}
   - component: {fileID: 1523391893}
   - component: {fileID: 1523391891}
   m_Layer: 5
@@ -2801,6 +2802,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1523391892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523391889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fa91ed4a38fa5ffb9386c7e6538549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicToggleButton: {fileID: 1523391894}
+  musicOnSprite: {fileID: 21300000, guid: 0bc52b0173a43394382d1f54fc652cb8, type: 3}
+  musicOffSprite: {fileID: 21300000, guid: 9dee2a85694754d4c99b63427f87fc9c, type: 3}
 --- !u!114 &1523391893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2858,9 +2874,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381735738}
-        m_TargetAssemblyTypeName: Music, Assembly-CSharp
-        m_MethodName: ToggleSound
+      - m_Target: {fileID: 1523391892}
+        m_TargetAssemblyTypeName: SoundScript, Assembly-CSharp
+        m_MethodName: PauseMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4025,6 +4041,7 @@ GameObject:
   - component: {fileID: 1899945173}
   - component: {fileID: 1899945178}
   - component: {fileID: 1899945177}
+  - component: {fileID: 1899945174}
   - component: {fileID: 1899945176}
   - component: {fileID: 1899945175}
   - component: {fileID: 1899945179}
@@ -4054,6 +4071,21 @@ RectTransform:
   m_AnchoredPosition: {x: 878, y: -76}
   m_SizeDelta: {x: 0, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1899945174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899945172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fa91ed4a38fa5ffb9386c7e6538549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicToggleButton: {fileID: 1899945176}
+  musicOnSprite: {fileID: 21300000, guid: 0bc52b0173a43394382d1f54fc652cb8, type: 3}
+  musicOffSprite: {fileID: 21300000, guid: 9dee2a85694754d4c99b63427f87fc9c, type: 3}
 --- !u!114 &1899945175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4111,9 +4143,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1381735738}
-        m_TargetAssemblyTypeName: Music, Assembly-CSharp
-        m_MethodName: ToggleSound
+      - m_Target: {fileID: 1899945174}
+        m_TargetAssemblyTypeName: SoundScript, Assembly-CSharp
+        m_MethodName: PauseMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
