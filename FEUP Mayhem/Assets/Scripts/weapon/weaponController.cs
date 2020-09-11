@@ -107,7 +107,9 @@ public class weaponController : MonoBehaviour
             {
                 thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(GunOffset.x, GunOffset.y, GunOffset.z), weaponTransform.rotation);
             }
-            thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
+            bulletController bulletController = thisBullet.GetComponent<bulletController>();
+            bulletController.SetBulletForce(bulletForce);
+            bulletController.SetPlayer(gameObject.transform.parent.gameObject);
             Destroy(thisBullet, bulletLifespan);
         }
         else
@@ -129,7 +131,9 @@ public class weaponController : MonoBehaviour
                 {
                     thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(GunOffset.x, GunOffset.y, GunOffset.z), gunRotation);
                 }
-                thisBullet.GetComponent<bulletController>().SetBulletForce(bulletForce);
+                bulletController bulletController = thisBullet.GetComponent<bulletController>();
+                bulletController.SetBulletForce(bulletForce);
+                bulletController.SetPlayer(gameObject.transform.parent.gameObject);
                 Destroy(thisBullet, bulletLifespan);
             }
         }

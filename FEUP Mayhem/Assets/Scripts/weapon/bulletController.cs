@@ -7,7 +7,8 @@ public class bulletController : MonoBehaviour
 {
     private Rigidbody2D bulletRB;
     float bulletForce;
-    bool shot;
+
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,6 @@ public class bulletController : MonoBehaviour
         bulletRB = this.GetComponent<Rigidbody2D>();
         bulletRB.gravityScale = 0;
         bulletRB.AddForce(transform.right * bulletForce);
-        shot = false;
         
         //Destroy(this.gameObject, 10f);
     }
@@ -24,27 +24,40 @@ public class bulletController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (!shot)
-                shot = true;
-            else
+            if (player != null)
             {
-                Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-                double multiplier = collision.GetComponent<PlayerMovement>().GetMultiplier();
-                if (multiplier < 1)
-                    collision.GetComponent<PlayerMovement>().IncreaseMultiplier(0.03);
-                rb.AddForce(new Vector2((float)(multiplier * 10f), 2f), ForceMode2D.Impulse);
-                Debug.Log("moved (" + ((float)(multiplier * 10f)).ToString() + ", 1)");
-                Destroy(this.gameObject);
+                if (collision.gameObject != player)
+                {
+                    Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+                    double multiplier = collision.GetComponent<PlayerMovement>().GetMultiplier();
+                    if (multiplier < 1)
+                        collision.GetComponent<PlayerMovement>().IncreaseMultiplier(0.03);
+                    if(transform.rotation.eulerAngles.y < -90f || transform.rotation.eulerAngles.y > 90f) {
+                        rb.AddForce(new Vector2(-(float)(multiplier * 10f), 2f), ForceMode2D.Impulse);
+                    }
+                    else
+                    {
+                        rb.AddForce(new Vector2((float)(multiplier * 10f), 2f), ForceMode2D.Impulse);
+                    }
+                    //Debug.Log("moved (" + ((float)(multiplier * 10f)).ToString() + ", 1)");
+                    Destroy(this.gameObject);
+                }
             }
-        }
+        }/*
         else
         {
             Destroy(this.gameObject);
         }
+        */
     }
 
     public void SetBulletForce(float bulletForce)
     {
         this.bulletForce = bulletForce;
+    }
+
+    public void SetPlayer(GameObject player)
+    {
+        this.player = player;
     }
 }
