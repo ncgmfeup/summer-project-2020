@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 276276348373332426}
   - component: {fileID: 276276348373332421}
   - component: {fileID: 276276348373332420}
+  - component: {fileID: 3913252318467309130}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -66,10 +67,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dynamite: {fileID: 2912437476100689702, guid: e4ddf29a78964e0468a044961c6e4e77, type: 3}
+  multiplier: 0.2
   jumpForce: 8
   moveSpeed: 6
   doubleJumpMultiplier: 0.75
-  smoothTime: 0.05
 --- !u!114 &276276348373332430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +387,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &3913252318467309130
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276276348373332423}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4ebdf116226cc44889c3f241d793d68, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7048160173930152675
 PrefabInstance:
   m_ObjectHideFlags: 0

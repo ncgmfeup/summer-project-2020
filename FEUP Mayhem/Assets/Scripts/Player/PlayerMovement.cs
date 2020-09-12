@@ -5,17 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Double))]
+[RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject Dynamite;
     private PlayerSpecs specs;
     private Rigidbody2D rb;
+    private Animator animator;
+
     [SerializeField]
     private double multiplier = 0.2;
     private new Collider2D collider;
 
 
     private bool canJump = true, doubleJump = true, onPlatform = false;
+    private bool isWalking = false, isJumping = false;
 
     private bool canUseDynamite = true;
 
@@ -48,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         specs = GetComponent<PlayerSpecs>();
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
         multiplier = 0.01;
     }
 
@@ -71,11 +76,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canJump)
             {
+                isJumping = true;
                 rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
                 canJump = false;
             }
             else if (doubleJump)
             {
+                isJumping = true;
                 rb.velocity = new Vector2(rb.velocity.x, 0f);
                 rb.AddForce(Vector3.up * jumpForce * doubleJumpMultiplier, ForceMode2D.Impulse);
                 doubleJump = false;
@@ -103,11 +110,17 @@ public class PlayerMovement : MonoBehaviour
         // Flip character to the left or right
         if (horMove < 0)
         {
+            isWalking = true;
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (horMove > 0)
         {
+            isWalking = true;
             transform.eulerAngles = Vector3.zero;
+        }
+        else
+        {
+            isWalking = false;
         }
 
         if (rb.velocity.x < moveSpeed)
@@ -133,6 +146,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = 1.5f;
         }
+
+        animator.SetBool("walking", isWalking);
+        animator.SetBool("jumping", isJumping);
     }
 
     private void CheckHitbox(Collider2D col)
@@ -214,6 +230,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ResetJumpValues()
     {
+        isJumping = false;
         canJump = true;
         doubleJump = true;
     }
