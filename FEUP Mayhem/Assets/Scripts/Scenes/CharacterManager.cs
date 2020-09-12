@@ -28,4 +28,10 @@ public class CharacterManager : MonoBehaviour
             readyP1 = true;
         else readyP2 = true;
     }
+
+    public void Reset()
+    {
+        readyP1 = false;
+        readyP2 = false;
+    }
 }

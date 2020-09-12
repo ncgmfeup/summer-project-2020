@@ -62,6 +62,6 @@ public class CharacterSelection : MonoBehaviour
     public void Ready()
     {
         characterManager.SetReady(player);
-        PlayerPrefs.SetInt("CharacterP" + 1, index);
+        PlayerPrefs.SetInt("CharacterP" + player, index);
     }
 }
