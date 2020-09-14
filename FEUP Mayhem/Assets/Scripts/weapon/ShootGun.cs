@@ -83,6 +83,8 @@ public class ShootGun : MonoBehaviour
             if (gunScript.GetAmmo() == 1)
             {
                 currentGunCd = gunScript.GetMaxReloadCd();
+                GetComponent<ReloadBar>().StartReloading();
+                
             }
             else
             {
@@ -128,6 +130,7 @@ public class ShootGun : MonoBehaviour
         //Debug.Log(currentGunCd > -Time.deltaTime && currentGunCd < 0f && tmp.GetAmmo() == 0);
         if (currentGunCd > -Time.deltaTime && currentGunCd < 0f && tmp.GetAmmo() == tmp.GetClipSize())
         {
+            GetComponent<ReloadBar>().EndReload();
             onEndReload.Invoke(tmp.GetAmmo(), tmp.GetClipSize(), tmp.GetRemainingClips(), tmp.GetAutoFire());
         }
 

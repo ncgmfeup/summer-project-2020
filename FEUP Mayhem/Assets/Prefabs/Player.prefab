@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 276276348373332424}
   - component: {fileID: 276276348373332427}
   - component: {fileID: 276276348373332430}
+  - component: {fileID: 7287365816673067001}
   - component: {fileID: 276276348373332426}
   - component: {fileID: 276276348373332421}
   - component: {fileID: 276276348373332420}
@@ -289,6 +290,18 @@ MonoBehaviour:
         m_CallState: 2
   defaultGunScript: {fileID: 276276348312572482}
   currentGunScript: {fileID: 0}
+--- !u!114 &7287365816673067001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276276348373332423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8699141c2ee14414abc21618d58c842a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &276276348373332426
 Rigidbody2D:
   serializedVersion: 4
