@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7637583668806234006}
   - component: {fileID: 7637583668806234005}
   - component: {fileID: 7637583668806234004}
+  - component: {fileID: 9101432741659966351}
   - component: {fileID: 7637583668806234003}
   - component: {fileID: 7637583668806234002}
   - component: {fileID: 7637583668806234001}
@@ -66,10 +67,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dynamite: {fileID: 2912437476100689702, guid: e4ddf29a78964e0468a044961c6e4e77, type: 3}
+  multiplier: 0.2
   jumpForce: 8
   moveSpeed: 6
   doubleJumpMultiplier: 0.75
-  smoothTime: 0.05
 --- !u!114 &7637583668806234004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +289,21 @@ MonoBehaviour:
         m_CallState: 2
   defaultGunScript: {fileID: 863488624574794930}
   currentGunScript: {fileID: 0}
+--- !u!114 &9101432741659966351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637583668806234000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8699141c2ee14414abc21618d58c842a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 60, y: 20}
+  emptyTex: {fileID: 0}
+  fullTex: {fileID: 0}
 --- !u!50 &7637583668806234003
 Rigidbody2D:
   serializedVersion: 4
