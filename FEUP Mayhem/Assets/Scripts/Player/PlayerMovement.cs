@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         onPlatform = false;
         for (int i = 0; i < col.Length; i++)
         {
+            Debug.Log(col[i].gameObject.name);
             //Debug.Log(col[i].gameObject.layer);
             CheckHitbox(col[i]);
         }
@@ -98,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Horizontal Movement
         float horMove = Input.GetAxis(specs.HorizontalAxisName());
-        Debug.Log(horMove);
         if (Input.GetKey("1") && canUseDynamite)
         {
             Instantiate(Dynamite, transform.position, transform.rotation);
