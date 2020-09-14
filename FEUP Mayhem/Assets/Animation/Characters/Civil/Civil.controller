@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7763fd11ab2ccb544bf3e52816b8bad9, type: 2}
+  m_Motion: {fileID: 7400000, guid: db78c128d9771524dba825492f74cdb7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -106,7 +106,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 99e1575f2a2c2b04eaeab134693a3cc0, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7a508656862f51f4cb8645d16fa229de, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -146,7 +146,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bio
+  m_Name: Civil
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: jumping
@@ -302,7 +302,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 49aa7769d2bd2d643a6d1f08d09c5011, type: 2}
+  m_Motion: {fileID: 7400000, guid: ca7c379eda77f814b990621a9510f485, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

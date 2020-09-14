@@ -4301,6 +4301,10 @@ PrefabInstance:
       propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 1707311146}
+    - target: {fileID: 3913252318467309130, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 73a7d9ba4cb75704fbe6e51d8485e982, type: 2}
     - target: {fileID: 7287365816673067001, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: sprite
       value: 
