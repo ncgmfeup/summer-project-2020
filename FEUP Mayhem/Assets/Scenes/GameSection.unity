@@ -4143,11 +4143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 276276348373332420, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 6.5
+      value: 9.6
       objectReference: {fileID: 0}
     - target: {fileID: 276276348373332420, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 6.5
+      value: 9.6
       objectReference: {fileID: 0}
     - target: {fileID: 276276348373332420, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_Size.y
@@ -4393,6 +4393,14 @@ PrefabInstance:
     - target: {fileID: 7637583668806234005, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: moveSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637583668806234006, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: perkButton
+      value: Perk2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637583668806234006, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: dynamiteButton
+      value: Dynamite2
       objectReference: {fileID: 0}
     - target: {fileID: 7637583668806234007, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: m_LocalPosition.x

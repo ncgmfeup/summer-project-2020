@@ -99,8 +99,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Horizontal Movement
         float horMove = Input.GetAxis(specs.HorizontalAxisName());
-        Debug.Log(horMove);
-        if (Input.GetKey("1") && canUseDynamite)
+
+        if (Input.GetButton(specs.DynamiteButtonName()) && canUseDynamite)
         {
             Instantiate(Dynamite, transform.position, transform.rotation);
             canUseDynamite = false;

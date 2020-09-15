@@ -10,6 +10,10 @@ public class PlayerSpecs : MonoBehaviour
     private string jumpDownButton = "JumpDown1";
     [SerializeField]
     private string horizontalAxis = "Horizontal1";
+    [SerializeField]
+    private string dynamiteButton = "Dynamite1";
+    [SerializeField]
+    private string perkButton = "Perk1";
 
     public string FireButtonName()
     {
@@ -29,5 +33,15 @@ public class PlayerSpecs : MonoBehaviour
     public string JumpDownName()
     {
         return jumpDownButton;
+    }
+
+    public string DynamiteButtonName()
+    {
+        return dynamiteButton;
+    }
+
+    public string PerkButtonName()
+    {
+        return perkButton;
     }
 }
