@@ -4309,6 +4309,10 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 8347951335261451892, guid: f3e841d892fd2024695788ab7ea55682, type: 3}
+    - target: {fileID: 7287365816673067001, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: extra_position.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
 --- !u!1001 &7637583669101241688
@@ -4321,6 +4325,10 @@ PrefabInstance:
     - target: {fileID: 7637583668806234000, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: m_Name
       value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637583668806234000, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7637583668806234003, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: m_AngularDrag
@@ -4450,5 +4458,9 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 8347951335261451892, guid: f3e841d892fd2024695788ab7ea55682, type: 3}
+    - target: {fileID: 9101432741659966351, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: extra_position.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2d18529be5bb644987385f32b40ea06, type: 3}

@@ -58,15 +58,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        bottomLeft = new Vector2(transform.position.x, transform.position.y) + playerCol.offset - playerCol.size / 2f;
-        topRight = new Vector2(transform.position.x, transform.position.y) + playerCol.offset + new Vector2(playerCol.size.x / 2f, 0f) - new Vector2(0f, playerCol.size.y / 2f);
+        bottomLeft = new Vector2(transform.position.x, transform.position.y) + (playerCol.offset - playerCol.size / 2f) * transform.localScale;
+        topRight = new Vector2(transform.position.x, transform.position.y) + (playerCol.offset + new Vector2(playerCol.size.x / 2f, 0f) - new Vector2(0f, playerCol.size.y / 2f)) * transform.localScale;
 
         Collider2D[] col = Physics2D.OverlapAreaAll(bottomLeft, topRight);
-
         canJump = false;
         onPlatform = false;
         for (int i = 0; i < col.Length; i++)
         {
+            Debug.Log(col[i].gameObject.name);
             //Debug.Log(col[i].gameObject.layer);
             CheckHitbox(col[i]);
         }
