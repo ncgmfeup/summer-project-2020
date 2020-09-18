@@ -61,12 +61,25 @@ public class PlayerMovement : MonoBehaviour
         bottomLeft = new Vector2(transform.position.x, transform.position.y) + (playerCol.offset - playerCol.size / 2f) * transform.localScale;
         topRight = new Vector2(transform.position.x, transform.position.y) + (playerCol.offset + new Vector2(playerCol.size.x / 2f, 0f) - new Vector2(0f, playerCol.size.y / 2f)) * transform.localScale;
 
-        Collider2D[] col = Physics2D.OverlapAreaAll(bottomLeft, topRight);
+        /*
+        //Thanks to Baste on the unity forums for this snippet of code!
+        int myLayer = gameObject.layer;
+        int layerMask = 0;
+        for(int i = 0; i < 32; i++)
+        {
+            if (!Physics.GetIgnoreLayerCollision(myLayer, i))
+            {
+                layerMask = layerMask | 1 << i;
+            }
+        }*/
+        string[] layers = { "Platform", "Platform_Expect_2", "Ground"};
+        Collider2D[] col = Physics2D.OverlapAreaAll(bottomLeft, topRight, LayerMask.GetMask(layers));
+        Debug.Log(col.Length);
         canJump = false;
         onPlatform = false;
         for (int i = 0; i < col.Length; i++)
         {
-            Debug.Log(col[i].gameObject.name);
+            //Debug.Log(col[i].gameObject.name);
             //Debug.Log(col[i].gameObject.layer);
             CheckHitbox(col[i]);
         }
@@ -93,7 +106,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (onPlatform)
             {
-                collider.isTrigger = true;
+                JumpDownPlatform(col);
+                //collider.isTrigger = true;
             }
         }
 
@@ -209,14 +223,57 @@ public class PlayerMovement : MonoBehaviour
         }
     }*/
 
+    private void JumpDownPlatform(Collider2D[] col)
+    {
+        for (int i = 0; i < col.Length; i++)
+        {
+            if (col[i].CompareTag("Platform"))
+            {
+                onPlatform = false;
+                Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), col[i], true);
+            }
+        }
+    }
+    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Platform"))
         {
             onPlatform = false;
-            collider.isTrigger = false;
+            if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                if(collision.gameObject.layer == LayerMask.NameToLayer("Platform_Except_1"))
+                {
+                    collision.gameObject.layer = LayerMask.NameToLayer("Platform");
+                }
+                else if(collision.gameObject.layer == LayerMask.NameToLayer("Platform_Except_Both"))
+                {
+                    collision.gameObject.layer = LayerMask.NameToLayer("Platform_Except_2");
+                }
+                else
+                {
+                    Debug.Log("A");
+                }
+            }
+            else if (gameObject.layer == LayerMask.NameToLayer("Player2"))
+            {
+                if (collision.gameObject.layer == LayerMask.NameToLayer("Platform_Except_2"))
+                {
+                    collision.gameObject.layer = LayerMask.NameToLayer("Platform");
+                }
+                else if (collision.gameObject.layer == LayerMask.NameToLayer("Platform_Except_Both"))
+                {
+                    collision.gameObject.layer = LayerMask.NameToLayer("Platform_Except_1");
+                }
+                else
+                {
+                    Debug.Log("B");
+                }
+            }
+            //collider.isTrigger = false;
+
         }
-    }
+    }*/
 
     public double GetMultiplier()
     {
@@ -238,5 +295,13 @@ public class PlayerMovement : MonoBehaviour
     public void SetDynamiteTrue()
     {
         canUseDynamite = true;
+    }
+
+
+
+    public void ExitPlatform(Collider2D col)
+    {
+        Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), col, false);
+        onPlatform = true;
     }
 }
