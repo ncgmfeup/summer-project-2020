@@ -12,7 +12,7 @@ public class outOfBounds : MonoBehaviour
 
     private Vector2 screenMax, screenMin;   //hold max and min screen values
 
-    public enum posType { topRight, topLeft, top, right, left, other }; //legibility
+    public enum posType { topRight, topLeft, top, right, left, bottomRight, bottomLeft, bottom, other }; //legibility
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +51,7 @@ public class outOfBounds : MonoBehaviour
 
     private posType getPositionType()       //gets current player position (refer back to the enum)
     {
-        posType pos;
+        posType pos = posType.other;
 
         if (playerTransform.position.y > screenMax.y)   //out of the screen (top)
         {
@@ -68,6 +68,21 @@ public class outOfBounds : MonoBehaviour
                 pos = posType.top;
             }
         }
+        else if (playerTransform.position.y < screenMin.y)   //out of the screen (bottom)
+        {
+            if (playerTransform.position.x > screenMax.x)       //out of the screen (right)
+            {
+                pos = posType.bottomRight;
+            }
+            else if (playerTransform.position.x < screenMin.x)   //out of the screen (left)
+            {
+                pos = posType.bottomLeft;
+            }
+            else
+            {
+                pos = posType.bottom;
+            }
+        }
         else                                            //not out on the top
         {
             if (playerTransform.position.x > screenMax.x)       //out of the screen (right)
@@ -77,10 +92,6 @@ public class outOfBounds : MonoBehaviour
             else if (playerTransform.position.x < screenMin.x)   //out of the screen (left)
             {
                 pos = posType.left;
-            }
-            else
-            {
-                pos = posType.other;
             }
         }
         return pos;
@@ -111,6 +122,18 @@ public class outOfBounds : MonoBehaviour
             case (posType.left):
                 newPosition = new Vector2(screenMin.x + 1, playerTransform.position.y);
                 break;
+            
+            case (posType.bottomRight):
+                newPosition = new Vector2(screenMax.x - 1, screenMin.y + 1);
+                break;
+
+            case (posType.bottomLeft):
+                newPosition = new Vector2(screenMin.x + 1, screenMin.y + 1);
+                break;
+
+            case (posType.bottom):
+                newPosition = new Vector2(playerTransform.position.x, screenMin.y + 1);
+                break;
 
             default:
                 newPosition = new Vector2(playerTransform.position.x, playerTransform.position.y);
@@ -138,7 +161,21 @@ public class outOfBounds : MonoBehaviour
             case posType.left:
                 pointerTransform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
+
+            case (posType.bottomRight):
+                pointerTransform.rotation = Quaternion.Euler(0, 0, -45);
+                break;
+
+            case (posType.bottomLeft):
+                pointerTransform.rotation = Quaternion.Euler(0, 0, -135);
+                break;
+
+            case (posType.bottom):
+                pointerTransform.rotation = Quaternion.Euler(0, 0, -90);
+                break;
+
             default:
+                pointerTransform.rotation = Quaternion.Euler(0, 0, 0);
                 break;
         }
     }
