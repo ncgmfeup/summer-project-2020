@@ -26,7 +26,7 @@ public class Dynamite : MonoBehaviour
 
             Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
             if (rb && hit.name != "Dynamite(Clone)"){
-                Debug.Log(hit.name);
+                //Debug.Log(hit.name);
                 rb.AddForce(power*ExpositionPosition*radius, ForceMode2D.Impulse);
                 //AddExplosionForce(rb, power, ExpositionPosition, radius, upForce);
             }

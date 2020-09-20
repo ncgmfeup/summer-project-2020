@@ -19,7 +19,7 @@ public class PlatformExit : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("A");
+        //Debug.Log("A");
         playerMovScript.ExitPlatform(collision.GetComponent<Collider2D>());
     }
 }

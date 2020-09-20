@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         }*/
         string[] layers = { "Platform", "Platform_Expect_2", "Ground"};
         Collider2D[] col = Physics2D.OverlapAreaAll(bottomLeft, topRight, LayerMask.GetMask(layers));
-        Debug.Log(col.Length);
+        //Debug.Log(col.Length);
         canJump = false;
         onPlatform = false;
         for (int i = 0; i < col.Length; i++)

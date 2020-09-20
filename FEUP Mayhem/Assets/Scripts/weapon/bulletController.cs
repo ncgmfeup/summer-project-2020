@@ -43,7 +43,13 @@ public class bulletController : MonoBehaviour
                     Destroy(this.gameObject);
                 }
             }
-        }/*
+        }
+        else if(collision.CompareTag("Wall_Perk"))
+        {
+            collision.gameObject.GetComponent<Wall_Perk_Health>().SubtractHealth(0.02f);
+            Destroy(this.gameObject);
+        }
+        /*
         else
         {
             Destroy(this.gameObject);
