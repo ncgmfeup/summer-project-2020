@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour
 {
-    private CharacterManager characterManager; 
+    [SerializeField]
+    private CharacterManager characterManager = null;
+    
     [SerializeField] int player;
 
     private GameObject[] characterList;
@@ -13,8 +15,6 @@ public class CharacterSelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        characterManager = GameObject.FindObjectOfType<CharacterManager> ();
-
         //Fill array
         characterList = new GameObject[transform.childCount];
 
@@ -29,12 +29,6 @@ public class CharacterSelection : MonoBehaviour
         index = PlayerPrefs.GetInt("CharacterP" + player);
         if(characterList[index])
             characterList[index].SetActive(true);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ToggleLeft()
