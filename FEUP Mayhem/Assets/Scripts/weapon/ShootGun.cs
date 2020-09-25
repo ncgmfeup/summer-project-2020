@@ -50,6 +50,9 @@ public class ShootGun : MonoBehaviour
 
     float currentGunCd = 0;
 
+    //MechPerk related
+    private bool rotateWeapon = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -159,6 +162,28 @@ public class ShootGun : MonoBehaviour
     public void setGunScript(weaponController gun)
     {
         currentGunScript = gun;
+
+        if (rotateWeapon) ChangeWeaponDirection();
+    }
+
+    public void RotateWeapon(bool rotate = true)
+    {
+        rotateWeapon = rotate;
+        ChangeWeaponDirection();
+    }
+
+    private void ChangeWeaponDirection()
+    {
+        GameObject weapon = getCorrectGunScript().gameObject;
+
+        if (rotateWeapon)
+        {
+            weapon.transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else
+        {
+            weapon.transform.eulerAngles = Vector3.zero;
+        }
     }
 
     public weaponController getGunScript()
