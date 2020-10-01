@@ -1204,6 +1204,11 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 9b583e3a5cb9bfc459e6e809c1587eba, type: 2}
   - {fileID: 9100000, guid: e59c3d983ce4bcd4f8c17358101cccef, type: 2}
   - {fileID: 9100000, guid: 73a7d9ba4cb75704fbe6e51d8485e982, type: 2}
+  charactersPerks:
+  - MechPerk
+  - InfElecPerk
+  - MechPerk
+  - MechPerk
   eletroIndex: 1
 --- !u!4 &309332854
 Transform:

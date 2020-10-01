@@ -3,7 +3,9 @@ guid: 1d3c22530a813f549825a1e425b2962a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rayTransform: {fileID: 3946667744556925655, guid: a608a40ea798a2840bae257901f9f053, type: 3}
+  - rayPrefab: {fileID: 3946667744556925657, guid: a608a40ea798a2840bae257901f9f053, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
