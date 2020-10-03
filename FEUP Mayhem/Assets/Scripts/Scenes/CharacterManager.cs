@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CharacterManager : MonoBehaviour
 {
     private bool readyP1 = false, readyP2 = false;
+    public Animator anim;
     
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class CharacterManager : MonoBehaviour
     void Update()
     {
         if(readyP1 && readyP2){
+            anim.SetTrigger("FadeOut");
             SceneManager.LoadScene("GameSection");
 
         }
