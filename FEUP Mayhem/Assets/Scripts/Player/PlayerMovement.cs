@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(PlayerSpecs))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isWalking = false, isJumping = false;
 
     private bool canUseDynamite = true;
+    private bool moveEnabled = true;
 
 
     [SerializeField]
@@ -84,85 +86,88 @@ public class PlayerMovement : MonoBehaviour
             CheckHitbox(col[i]);
         }
 
-        // Jump
-        if (Input.GetButtonDown(specs.JumpButtonName()))
+        if (moveEnabled)
         {
-            if (canJump)
+            // Jump
+            if (Input.GetButtonDown(specs.JumpButtonName()))
             {
-                isJumping = true;
-                rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-                canJump = false;
+                if (canJump)
+                {
+                    isJumping = true;
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+                    canJump = false;
+                }
+                else if (doubleJump)
+                {
+                    isJumping = true;
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
+                    rb.AddForce(Vector3.up * jumpForce * doubleJumpMultiplier, ForceMode2D.Impulse);
+                    doubleJump = false;
+                }
+
             }
-            else if (doubleJump)
+            else if (Input.GetButtonDown(specs.JumpDownName()))
             {
-                isJumping = true;
-                rb.velocity = new Vector2(rb.velocity.x, 0f);
-                rb.AddForce(Vector3.up * jumpForce * doubleJumpMultiplier, ForceMode2D.Impulse);
-                doubleJump = false;
+                if (onPlatform)
+                {
+                    JumpDownPlatform(col);
+                    //collider.isTrigger = true;
+                }
             }
 
-        }
-        else if (Input.GetButtonDown(specs.JumpDownName()))
-        {
-            if (onPlatform)
+            // Horizontal Movement
+            float horMove = Input.GetAxis(specs.HorizontalAxisName());
+
+            if (Input.GetButton(specs.DynamiteButtonName()) && canUseDynamite)
             {
-                JumpDownPlatform(col);
-                //collider.isTrigger = true;
+                Instantiate(Dynamite, transform.position, transform.rotation);
+                canUseDynamite = false;
+                Invoke("SetDynamiteTrue", 1);
             }
-        }
 
-        // Horizontal Movement
-        float horMove = Input.GetAxis(specs.HorizontalAxisName());
+            // Flip character to the left or right
+            if (horMove < 0)
+            {
+                isWalking = true;
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            else if (horMove > 0)
+            {
+                isWalking = true;
+                transform.eulerAngles = Vector3.zero;
+            }
+            else
+            {
+                isWalking = false;
+            }
 
-        if (Input.GetButton(specs.DynamiteButtonName()) && canUseDynamite)
-        {
-            Instantiate(Dynamite, transform.position, transform.rotation);
-            canUseDynamite = false;
-            Invoke("SetDynamiteTrue", 1);
-        }
+            if (rb.velocity.x < moveSpeed)
+            {
+                rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 60f);
 
-        // Flip character to the left or right
-        if (horMove < 0)
-        {
-            isWalking = true;
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-        else if (horMove > 0)
-        {
-            isWalking = true;
-            transform.eulerAngles = Vector3.zero;
-        }
-        else
-        {
-            isWalking = false;
-        }
+            // rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 60f);
+            //rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), ref vel, smoothTime);
+            }
+            else
+            {
+                rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 30f);
 
-        if (rb.velocity.x < moveSpeed)
-        {
-            rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 60f);
+                //rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed * Time.deltaTime, rb.velocity.y), moveSpeed * Time.deltaTime);
+                //  Debug.Log("A");
+                //rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), ref vel, smoothTimeHighSpeed);
+            }
+            if (rb.velocity.y < -0.0001f)
+            {
+                rb.gravityScale = 2.5f;
+            }
+            else
+            {
+                rb.gravityScale = 1.5f;
+            }
 
-        // rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 60f);
-        //rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), ref vel, smoothTime);
+            animator.SetBool("walking", isWalking);
+            animator.SetBool("jumping", isJumping);
         }
-        else
-        {
-            rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), moveSpeed * Time.deltaTime * 30f);
-
-            //rb.velocity = Vector2.MoveTowards(rb.velocity, new Vector2(horMove * moveSpeed * Time.deltaTime, rb.velocity.y), moveSpeed * Time.deltaTime);
-            //  Debug.Log("A");
-            //rb.velocity = Vector2.SmoothDamp(rb.velocity, new Vector2(horMove * moveSpeed, rb.velocity.y), ref vel, smoothTimeHighSpeed);
-        }
-        if (rb.velocity.y < -0.0001f)
-        {
-            rb.gravityScale = 2.5f;
-        }
-        else
-        {
-            rb.gravityScale = 1.5f;
-        }
-
-        animator.SetBool("walking", isWalking);
-        animator.SetBool("jumping", isJumping);
     }
 
     private void CheckHitbox(Collider2D col)
@@ -280,6 +285,12 @@ public class PlayerMovement : MonoBehaviour
         return multiplier;
     }
 
+    public void stun()
+    {
+        moveEnabled = false;
+        StartCoroutine(WaitThreeSeconds());
+    }
+
     public void IncreaseMultiplier(double inc)
     {
         multiplier += inc;
@@ -297,7 +308,11 @@ public class PlayerMovement : MonoBehaviour
         canUseDynamite = true;
     }
 
-
+    private IEnumerator WaitThreeSeconds()
+    {
+        yield return new WaitForSeconds(3);
+        moveEnabled = true;
+    }
 
     public void ExitPlatform(Collider2D col)
     {

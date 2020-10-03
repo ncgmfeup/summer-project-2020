@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class respawn : MonoBehaviour
 {
-    public Transform playerTransform;
-    public Transform respawnPoint;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //StartCoroutine(WaitToMove());
-    }
+    [SerializeField] private Transform respawnPoint;            //holds reference to the respawn point transform
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(WaitToMove());
+        StartCoroutine(WaitToMove(collision.transform));        //starts coroutine and passes the collided tranform to it
     }
 
-    private IEnumerator WaitToMove()
+    private IEnumerator WaitToMove(Transform collisionTransform)
     {
-        yield return new WaitForSeconds(2f);
-        playerTransform.position = respawnPoint.position;
+        yield return new WaitForSeconds(2f);                    //waits 2 secs
+        collisionTransform.position = respawnPoint.position;    //changes collided tranform position
     }
 }
