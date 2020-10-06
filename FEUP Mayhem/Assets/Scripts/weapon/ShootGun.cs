@@ -163,6 +163,8 @@ public class ShootGun : MonoBehaviour
     {
         currentGunScript = gun;
 
+        currentGunScript.transform.rotation = Quaternion.Euler(Vector3.zero);
+
         if (rotateWeapon) ChangeWeaponDirection();
     }
 
@@ -175,14 +177,13 @@ public class ShootGun : MonoBehaviour
     private void ChangeWeaponDirection()
     {
         GameObject weapon = getCorrectGunScript().gameObject;
-
         if (rotateWeapon)
         {
-            weapon.transform.eulerAngles = new Vector3(0, 180, 0);
+            weapon.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
         else
         {
-            weapon.transform.eulerAngles = Vector3.zero;
+            weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
         }
     }
 
