@@ -4899,7 +4899,7 @@ PrefabInstance:
     - target: {fileID: 7637583668806234004, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: onShootingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 499614495}
+      objectReference: {fileID: 28112984}
     - target: {fileID: 7637583668806234004, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: onShootingEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -4960,6 +4960,10 @@ PrefabInstance:
       propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 1283745523}
+    - target: {fileID: 7637583668806234004, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: onShootingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateImage
+      objectReference: {fileID: 0}
     - target: {fileID: 7637583668806234005, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: moveSpeed
       value: 5
