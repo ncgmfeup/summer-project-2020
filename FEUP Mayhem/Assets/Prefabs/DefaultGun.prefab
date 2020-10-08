@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletForce: 800
   bulletLifespan: 0.2
+  WeaponType: Shotgun
   maxGunCd: 0.5
   maxReloadCd: 2
   autoFire: 0

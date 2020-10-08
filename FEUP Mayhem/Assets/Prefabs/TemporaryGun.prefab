@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletForce: 500
   bulletLifespan: 1.5
+  WeaponType: Pistol
   maxGunCd: 0.25
   maxReloadCd: 2
   autoFire: 1

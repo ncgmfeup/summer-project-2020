@@ -18,8 +18,11 @@ public class PlayerMovement : MonoBehaviour
     private double multiplier = 0.2;
     private new Collider2D collider;
 
-    private AudioSource sound;
+    private AudioSource jumpSound;
 
+    private AudioSource landSound;
+
+    private AudioSource collisionSound; 
     private string soundPrefix = "/Audio Objects/SFX/";
 
 
@@ -60,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
         collider = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         multiplier = 0.01;
+        jumpSound = GameObject.Find(soundPrefix + "Jump").GetComponent<AudioSource>();
+        landSound = GameObject.Find(soundPrefix + "Land").GetComponent<AudioSource>();
+        collisionSound = GameObject.Find(soundPrefix + "Collision").GetComponent<AudioSource>();
+
     }
 
     private void Update()
@@ -82,13 +89,13 @@ public class PlayerMovement : MonoBehaviour
             // Jump
             if (Input.GetButtonDown(specs.JumpButtonName()))
             {
-                sound = GameObject.Find(soundPrefix + "Jump").GetComponent<AudioSource>();
+                
                 if (canJump)
                 {
                     isJumping = true;
                     rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
                     canJump = false;
-                    sound.Play();
+                    jumpSound.Play();
                 }
                 else if (doubleJump)
                 {
@@ -96,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, 0f);
                     rb.AddForce(Vector3.up * jumpForce * doubleJumpMultiplier, ForceMode2D.Impulse);
                     doubleJump = false;
-                    sound.Play();
+                    jumpSound.Play();
 
                 }
 
@@ -213,13 +220,11 @@ public class PlayerMovement : MonoBehaviour
     public void IncreaseMultiplier(double inc)
     {
         multiplier += inc;
-        GameObject.Find(soundPrefix + "Collision").GetComponent<AudioSource>().Play();
+        collisionSound.Play();
     }
 
     private void ResetJumpValues()
     {
-        
-        //GameObject.Find(soundPrefix + "Land").GetComponent<AudioSource>().Play();
         isJumping = false;
         canJump = true;
         doubleJump = true;
@@ -241,5 +246,12 @@ public class PlayerMovement : MonoBehaviour
         
         Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), col, false);
         onPlatform = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Platform") && !landSound.isPlaying){
+            landSound.Play();
+        }
     }
 }

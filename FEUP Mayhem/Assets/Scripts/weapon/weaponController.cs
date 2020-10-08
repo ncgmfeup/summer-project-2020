@@ -15,8 +15,7 @@ public class weaponController : MonoBehaviour
     [SerializeField]
     float bulletLifespan = 1.5f;
 
-
-
+    public string WeaponType;
 
     //Propriedades da arma
     [SerializeField]
@@ -95,7 +94,7 @@ public class weaponController : MonoBehaviour
 
     public void ShootBullet()
     {
-
+        GameObject.Find("/Audio Objects/SFX/" + WeaponType).GetComponent<AudioSource>().Play();
         if (shots_per_burst == 1)
         {
             GameObject thisBullet;

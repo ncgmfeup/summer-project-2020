@@ -1584,7 +1584,7 @@ GameObject:
   - component: {fileID: 284355068}
   - component: {fileID: 284355069}
   m_Layer: 0
-  m_Name: ShotgunShoot
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5404,7 +5404,7 @@ GameObject:
   - component: {fileID: 1583634574}
   - component: {fileID: 1583634575}
   m_Layer: 0
-  m_Name: RifleShoot
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6617,7 +6617,7 @@ GameObject:
   - component: {fileID: 2023041119}
   - component: {fileID: 2023041120}
   m_Layer: 0
-  m_Name: PistolShoot
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletForce: 500
   bulletLifespan: 1.2
+  WeaponType: Rifle
   maxGunCd: 0.1
   maxReloadCd: 2.5
   autoFire: 1
