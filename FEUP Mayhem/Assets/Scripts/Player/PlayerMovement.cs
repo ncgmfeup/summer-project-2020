@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private double multiplier = 0.2;
     private new Collider2D collider;
 
+    private AudioSource sound;
+
+    private string soundPrefix = "/Audio Objects/SFX/";
+
 
     private bool canJump = true, doubleJump = true, onPlatform = false;
     private bool isWalking = false, isJumping = false;
@@ -63,17 +67,6 @@ public class PlayerMovement : MonoBehaviour
         bottomLeft = new Vector2(transform.position.x, transform.position.y) + (playerCol.offset - playerCol.size / 2f) * transform.localScale;
         topRight = new Vector2(transform.position.x, transform.position.y) + (playerCol.offset + new Vector2(playerCol.size.x / 2f, 0f) - new Vector2(0f, playerCol.size.y / 2f)) * transform.localScale;
 
-        /*
-        //Thanks to Baste on the unity forums for this snippet of code!
-        int myLayer = gameObject.layer;
-        int layerMask = 0;
-        for(int i = 0; i < 32; i++)
-        {
-            if (!Physics.GetIgnoreLayerCollision(myLayer, i))
-            {
-                layerMask = layerMask | 1 << i;
-            }
-        }*/
         string[] layers = { "Platform", "Platform_Expect_2", "Ground"};
         Collider2D[] col = Physics2D.OverlapAreaAll(bottomLeft, topRight, LayerMask.GetMask(layers));
         //Debug.Log(col.Length);
@@ -81,8 +74,6 @@ public class PlayerMovement : MonoBehaviour
         onPlatform = false;
         for (int i = 0; i < col.Length; i++)
         {
-            //Debug.Log(col[i].gameObject.name);
-            //Debug.Log(col[i].gameObject.layer);
             CheckHitbox(col[i]);
         }
 
@@ -91,11 +82,13 @@ public class PlayerMovement : MonoBehaviour
             // Jump
             if (Input.GetButtonDown(specs.JumpButtonName()))
             {
+                sound = GameObject.Find(soundPrefix + "Jump").GetComponent<AudioSource>();
                 if (canJump)
                 {
                     isJumping = true;
                     rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
                     canJump = false;
+                    sound.Play();
                 }
                 else if (doubleJump)
                 {
@@ -103,6 +96,8 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, 0f);
                     rb.AddForce(Vector3.up * jumpForce * doubleJumpMultiplier, ForceMode2D.Impulse);
                     doubleJump = false;
+                    sound.Play();
+
                 }
 
             }
@@ -172,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckHitbox(Collider2D col)
     {
-
+        
         // Detect collisions with the floor 
         if (col.CompareTag("Floor"))
         {
@@ -191,42 +186,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Collider2D col = collision.collider;
-
-        // Detect collisions with the floor 
-        if(col.CompareTag("Floor"))
-        {
-            // If the character touched the floor, it can jump again
-            ResetJumpValues();
-        }
-        else if (col.CompareTag("Platform"))
-        {
-            if (rb.velocity.y <= 0f)
-            {
-                onPlatform = true;
-
-                // If the character touched a platform, it can jump again
-                ResetJumpValues();
-            }
-        }
-    }
-    */
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Platform"))
-        {
-            onPlatform = true;
-            collider.isTrigger = false;
-        }else if(collision.CompareTag("Floor"))
-        {
-            collider.isTrigger = false;
-            ResetJumpValues();
-        }
-    }*/
 
     private void JumpDownPlatform(Collider2D[] col)
     {
@@ -239,47 +198,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    /*
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Platform"))
-        {
-            onPlatform = false;
-            if (gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                if(collision.gameObject.layer == LayerMask.NameToLayer("Platform_Except_1"))
-                {
-                    collision.gameObject.layer = LayerMask.NameToLayer("Platform");
-                }
-                else if(collision.gameObject.layer == LayerMask.NameToLayer("Platform_Except_Both"))
-                {
-                    collision.gameObject.layer = LayerMask.NameToLayer("Platform_Except_2");
-                }
-                else
-                {
-                    Debug.Log("A");
-                }
-            }
-            else if (gameObject.layer == LayerMask.NameToLayer("Player2"))
-            {
-                if (collision.gameObject.layer == LayerMask.NameToLayer("Platform_Except_2"))
-                {
-                    collision.gameObject.layer = LayerMask.NameToLayer("Platform");
-                }
-                else if (collision.gameObject.layer == LayerMask.NameToLayer("Platform_Except_Both"))
-                {
-                    collision.gameObject.layer = LayerMask.NameToLayer("Platform_Except_1");
-                }
-                else
-                {
-                    Debug.Log("B");
-                }
-            }
-            //collider.isTrigger = false;
-
-        }
-    }*/
-
+ 
     public double GetMultiplier()
     {
         return multiplier;
@@ -294,10 +213,13 @@ public class PlayerMovement : MonoBehaviour
     public void IncreaseMultiplier(double inc)
     {
         multiplier += inc;
+        GameObject.Find(soundPrefix + "Collision").GetComponent<AudioSource>().Play();
     }
 
     private void ResetJumpValues()
     {
+        
+        //GameObject.Find(soundPrefix + "Land").GetComponent<AudioSource>().Play();
         isJumping = false;
         canJump = true;
         doubleJump = true;
@@ -316,6 +238,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ExitPlatform(Collider2D col)
     {
+        
         Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), col, false);
         onPlatform = true;
     }

@@ -74,11 +74,6 @@ public class ShootGun : MonoBehaviour
         bool autoFire = gunScript.GetAutoFire();
 
 
-
-
-
-
-
         if (((!autoFire && Input.GetButtonDown(fireButtonName)) || (autoFire && Input.GetButton(fireButtonName))) && currentGunCd <= 0f)
         {
             bool result;
@@ -87,7 +82,8 @@ public class ShootGun : MonoBehaviour
             {
                 currentGunCd = gunScript.GetMaxReloadCd();
                 GetComponent<ReloadBar>().StartReloading();
-                
+                GameObject.Find("/Audio Objects/SFX/Reload").GetComponent<AudioSource>().Play();
+
             }
             else
             {
@@ -104,9 +100,11 @@ public class ShootGun : MonoBehaviour
                 weaponController temp = getCorrectGunScript();
                 if (temp == defaultGunScript)
                 {
+                    GameObject.Find("/Audio Objects/SFX/ShotgunShoot").GetComponent<AudioSource>().Play();
                     onShootingEvent.Invoke(temp.GetAmmo() % temp.GetClipSize(), temp.GetClipSize(), -1, autoFire);
                 }
                 else {
+                   // GameObject.Find("/Audio Objects/SFX/RifleShoot").GetComponent<AudioSource>().Play();
                     onShootingEvent.Invoke(temp.GetAmmo() % temp.GetClipSize(), temp.GetClipSize(), temp.GetRemainingClips(), autoFire);
                 }
             }
