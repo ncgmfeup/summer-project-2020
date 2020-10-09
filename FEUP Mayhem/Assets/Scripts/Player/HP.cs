@@ -15,13 +15,17 @@ public class HP : MonoBehaviour
     [SerializeField]
     public GameObject buttons;
 
+    private AudioSource victorySound;
+    private AudioSource music;
+
     // Start is called before the first frame update
     void Start()
     {
         //Set lives GUI
         string nLivesString = number_of_lives.ToString();
         livesText.text = nLivesString;
-    
+        victorySound = GameObject.Find("/Audio Objects/SFX/Victory").GetComponent<AudioSource>();
+        music = GameObject.Find("/Audio Objects/Music").GetComponent<AudioSource>();
     }
 
     public void death()
@@ -36,6 +40,11 @@ public class HP : MonoBehaviour
 
     void lost()
     {
+        if (!victorySound.isPlaying){
+            music.Stop();
+            victorySound.Play();
+        } 
+
         victory.SetActive(true);
         shadow.SetActive(true);
         buttons.SetActive(true);
