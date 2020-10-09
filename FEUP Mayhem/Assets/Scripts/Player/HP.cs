@@ -8,6 +8,12 @@ public class HP : MonoBehaviour
     public int number_of_lives = 3;
     [SerializeField]
     public Text livesText;
+    [SerializeField]
+    public GameObject victory;
+    [SerializeField]
+    public GameObject shadow;
+    [SerializeField]
+    public GameObject buttons;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,8 @@ public class HP : MonoBehaviour
 
     void lost()
     {
-
+        victory.SetActive(true);
+        shadow.SetActive(true);
+        buttons.SetActive(true);
     }
 }
