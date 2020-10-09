@@ -25,9 +25,11 @@ public class Dynamite : MonoBehaviour
         foreach(Collider2D hit in colliders){
 
             Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-            if (rb && hit.name != "Dynamite(Clone)"){
+            if (rb && hit.gameObject.tag == "Player"){
                 //Debug.Log(hit.name);
-                rb.AddForce(power*ExpositionPosition*radius, ForceMode2D.Impulse);
+                Vector2 diff = new Vector2(hit.gameObject.transform.position.x, hit.gameObject.transform.position.y) - ExpositionPosition;
+                diff.Normalize();
+                rb.AddForce(power*diff*radius, ForceMode2D.Impulse);
                 //AddExplosionForce(rb, power, ExpositionPosition, radius, upForce);
             }
         }
