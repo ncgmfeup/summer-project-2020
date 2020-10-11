@@ -68,6 +68,7 @@ public class ShootGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         weaponController gunScript = getCorrectGunScript();
 
         currentGunCd -= Time.deltaTime;
@@ -159,8 +160,7 @@ public class ShootGun : MonoBehaviour
     {
         currentGunScript = gun;
 
-        currentGunScript.transform.rotation = Quaternion.Euler(Vector3.zero);
-
+        currentGunScript.transform.localRotation = Quaternion.Euler(Vector3.zero);
         if (rotateWeapon) ChangeWeaponDirection();
     }
 

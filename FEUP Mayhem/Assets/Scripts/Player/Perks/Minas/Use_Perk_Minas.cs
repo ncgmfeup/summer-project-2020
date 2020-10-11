@@ -34,13 +34,13 @@ public class Use_Perk_Minas : MonoBehaviour
     {
         if (Input.GetButtonDown(perkButtonName))
         {
-            if(wall == null && canUseWall)
+            if(wall == null && canUseWall) //Constrói a parede
             {
                 raycast = Physics2D.Raycast(transform.position + new Vector3(offset_x_times_wall_size, 0, 0), new Vector2(0, -1), Mathf.Infinity, LayerMask.GetMask(layers));
-                wall = Instantiate(wallPrefab, new Vector3(transform.position.x + offset_x_times_wall_size, raycast.collider.transform.position.y + delta_y, transform.position.z), Quaternion.identity);
+                wall = Instantiate(wallPrefab, new Vector3(transform.position.x + offset_x_times_wall_size * (((int) transform.rotation.eulerAngles.y % 179) - 0.5f) * -2f , raycast.collider.transform.position.y + delta_y, transform.position.z), Quaternion.identity);
                 StartCoroutine(Cooldown());
             }
-            else if(wall != null)
+            else if(wall != null) //Destroi a parede
             {
                 Destroy(wall);
             }

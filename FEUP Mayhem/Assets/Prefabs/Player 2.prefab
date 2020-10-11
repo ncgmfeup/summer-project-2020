@@ -55,6 +55,8 @@ MonoBehaviour:
   jumpButton: Jump2
   jumpDownButton: JumpDown2
   horizontalAxis: Horizontal2
+  dynamiteButton: Dynamite1
+  perkButton: Perk1
 --- !u!114 &7637583668806234005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,9 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8699141c2ee14414abc21618d58c842a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 60, y: 20}
-  emptyTex: {fileID: 0}
-  fullTex: {fileID: 0}
+  extra_position: {x: 0, y: 0.5}
+  sprite: {fileID: 0}
 --- !u!50 &7637583668806234003
 Rigidbody2D:
   serializedVersion: 4
@@ -429,6 +430,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7637583668806234007}
     m_Modifications:
+    - target: {fileID: 7063227194065735841, guid: 42e0cd075e8b0364fb74c91bd5eaed5a, type: 3}
+      propertyPath: GunOffset.y
+      value: 0.1666666
+      objectReference: {fileID: 0}
     - target: {fileID: 7063227194065735868, guid: 42e0cd075e8b0364fb74c91bd5eaed5a, type: 3}
       propertyPath: m_Name
       value: DefaultGun
