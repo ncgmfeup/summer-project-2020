@@ -44,9 +44,16 @@ public class HP : MonoBehaviour
             music.Stop();
             victorySound.Play();
         } 
-
+        
         victory.SetActive(true);
         shadow.SetActive(true);
         buttons.SetActive(true);
+
+        GameObject p1 = GameObject.Find("Player");
+        GameObject p2 = GameObject.Find("Player 2");
+
+        p1.SetActive(false);
+        p2.SetActive(false);
+
     }
 }
