@@ -43,4 +43,9 @@ public class PauseMenu : MonoBehaviour
         Resume();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
     }
+
+    public void Reset(){
+        Resume();
+        SceneManager.LoadScene("GameSection");
+    }
 }
