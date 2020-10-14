@@ -30,6 +30,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 15.366667
         value: {x: -25.00257, y: 756, z: -252.1513}
+        inSlope: {x: 0, y: 126.609695, z: 0}
+        outSlope: {x: 0, y: 126.609695, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 35.1
+        value: {x: -25.00257, y: 3890, z: -252.1513}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -98,7 +107,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 15.366667
+    m_StopTime: 35.1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -135,6 +144,15 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 35.1
+        value: -25.00257
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -157,6 +175,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 15.366667
         value: 756
+        inSlope: 126.609695
+        outSlope: 126.609695
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 35.1
+        value: 3890
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -184,6 +211,15 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 15.366667
+        value: -252.1513
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 35.1
         value: -252.1513
         inSlope: 0
         outSlope: 0
@@ -230,7 +266,7 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 15.333333
+  - time: 34.966667
     functionName: FadeOut
     data: 
     objectReferenceParameter: {fileID: 0}
