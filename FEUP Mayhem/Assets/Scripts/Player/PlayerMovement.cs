@@ -52,6 +52,10 @@ public class PlayerMovement : MonoBehaviour
 
     BoxCollider2D playerCol;
 
+    GameObject characterNameText;
+
+    public string playerName;
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         jumpSound = GameObject.Find(soundPrefix + "Jump").GetComponent<AudioSource>();
         landSound = GameObject.Find(soundPrefix + "Land").GetComponent<AudioSource>();
         collisionSound = GameObject.Find(soundPrefix + "Collision").GetComponent<AudioSource>();
+        AddCharacterName();
 
     }
 
@@ -170,6 +175,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("walking", isWalking);
             animator.SetBool("jumping", isJumping);
         }
+
+         characterNameText.transform.position = transform.position + Vector3.up * 1.5f;  
     }
 
     private void CheckHitbox(Collider2D col)
@@ -253,5 +260,19 @@ public class PlayerMovement : MonoBehaviour
         if (col.gameObject.CompareTag("Platform") && !landSound.isPlaying){
             landSound.Play();
         }
+    }
+
+
+    void AddCharacterName(){
+        characterNameText = new GameObject("player_label");          
+        characterNameText.transform.rotation = Camera.main.transform.rotation; // Causes the text faces camera.
+        TextMesh tm = characterNameText.AddComponent<TextMesh>();
+        tm.text = playerName;
+        tm.color = new Color(0,0,0);
+        tm.fontStyle = FontStyle.Bold;
+        tm.alignment = TextAlignment.Center;
+        tm.anchor = TextAnchor.MiddleCenter;
+        tm.characterSize = 0.065f;
+        tm.fontSize = 60;
     }
 }
