@@ -8318,7 +8318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 38043439f48ecce408c67ef9b533a4fd, type: 2}
-  slider: {fileID: 87877774}
+  masterSlider: {fileID: 87877774}
+  musicSlider: {fileID: 848973439}
+  sfxSlider: {fileID: 432777072}
 --- !u!4 &1979390589
 Transform:
   m_ObjectHideFlags: 0
