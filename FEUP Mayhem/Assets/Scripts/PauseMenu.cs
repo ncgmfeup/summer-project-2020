@@ -45,7 +45,6 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Reset(){
-        Resume();
-        SceneManager.LoadScene("GameSection");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
