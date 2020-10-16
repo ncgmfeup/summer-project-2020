@@ -8,8 +8,11 @@ public class respawn : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(WaitToMove(collision.transform));        //starts coroutine and passes the collided tranform to it
-        collision.gameObject.GetComponent<HP>().death();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(WaitToMove(collision.transform));        //starts coroutine and passes the collided tranform to it
+            collision.gameObject.GetComponent<HP>().death();
+        }
     }
 
     private IEnumerator WaitToMove(Transform collisionTransform)

@@ -3522,7 +3522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &748362779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9003,6 +9003,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: bulletForce
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: bulletLifespan
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 276276348312572508, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
