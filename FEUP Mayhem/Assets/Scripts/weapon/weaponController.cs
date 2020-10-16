@@ -50,6 +50,19 @@ public class weaponController : MonoBehaviour
     public Transform weaponTransform;
     public GameObject bulletPrefab;
 
+
+
+    //DAMAGE
+    [SerializeField]
+    float damage = 0.02f;
+
+    [SerializeField]
+    Vector2Int staticKnockback = new Vector2Int(1, 1);
+
+    [SerializeField]
+    Vector2 knockbackMultiplier = new Vector2(1, 1);
+
+
     void Awake()
     {
         remainingAmmo = clipSize;
@@ -131,6 +144,7 @@ public class weaponController : MonoBehaviour
                     thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(GunOffset.x, GunOffset.y, GunOffset.z), gunRotation);
                 }
                 bulletController bulletController = thisBullet.GetComponent<bulletController>();
+                bulletController.SetDamageAndKnockback(damage, staticKnockback, knockbackMultiplier);
                 bulletController.SetBulletForce(bulletForce);
                 bulletController.SetPlayer(gameObject.transform.parent.gameObject);
                 Destroy(thisBullet, bulletLifespan);

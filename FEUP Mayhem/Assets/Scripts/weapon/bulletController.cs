@@ -8,6 +8,14 @@ public class bulletController : MonoBehaviour
     private Rigidbody2D bulletRB;
     float bulletForce;
 
+
+    //DAMAGE
+    float damage = 0.02f;
+
+    Vector2Int staticKnockback = new Vector2Int(1, 1);
+    Vector2 knockbackMultiplier = new Vector2(1, 1);
+
+
     GameObject player;
 
     // Start is called before the first frame update
@@ -31,13 +39,27 @@ public class bulletController : MonoBehaviour
                     Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
                     double multiplier = collision.GetComponent<PlayerMovement>().GetMultiplier();
                     if (multiplier < 3)
-                        collision.GetComponent<PlayerMovement>().IncreaseMultiplier(0.02);
+                        collision.GetComponent<PlayerMovement>().IncreaseMultiplier(damage);
                     if(transform.rotation.eulerAngles.y < -90f || transform.rotation.eulerAngles.y > 90f) {
-                        rb.AddForce(new Vector2(-(float)(multiplier * 15f), 2f), ForceMode2D.Impulse);
+                        rb.AddForce(new Vector2(-(float)(multiplier * 15f) * knockbackMultiplier.x, 2f * knockbackMultiplier.y), ForceMode2D.Impulse);
                     }
                     else
                     {
-                        rb.AddForce(new Vector2((float)(multiplier * 10f), 2f), ForceMode2D.Impulse);
+                        if (staticKnockback.x == 0 && staticKnockback.y == 0)
+                        {
+                            rb.AddForce(new Vector2(10f * knockbackMultiplier.x, 20f * knockbackMultiplier.y), ForceMode2D.Impulse);
+                        }
+                        else if (staticKnockback.x == 0)
+                        {
+                            rb.AddForce(new Vector2(10f * knockbackMultiplier.x, 20f * knockbackMultiplier.y * (float)multiplier), ForceMode2D.Impulse);
+                        }
+                        else if (staticKnockback.y == 0)
+                        {
+                            rb.AddForce(new Vector2((float)(Math.Pow(multiplier, 0.5) * 80f) * knockbackMultiplier.x, 2f * knockbackMultiplier.y), ForceMode2D.Impulse);
+                        }
+                        else {
+                            rb.AddForce(new Vector2((float)(multiplier * 80f) * knockbackMultiplier.x, 2f * knockbackMultiplier.y * (float)multiplier), ForceMode2D.Impulse);
+                        }
                     }
                     //Debug.Log("moved (" + ((float)(multiplier * 10f)).ToString() + ", 1)");
                     Destroy(this.gameObject);
@@ -46,7 +68,7 @@ public class bulletController : MonoBehaviour
         }
         else if(collision.CompareTag("Wall_Perk"))
         {
-            collision.gameObject.GetComponent<Wall_Perk_Health>().SubtractHealth(0.02f);
+            collision.gameObject.GetComponent<Wall_Perk_Health>().SubtractHealth(damage);
             Destroy(this.gameObject);
         }
         /*
@@ -65,5 +87,12 @@ public class bulletController : MonoBehaviour
     public void SetPlayer(GameObject player)
     {
         this.player = player;
+    }
+
+    public void SetDamageAndKnockback(float damage, Vector2Int staticKnockback, Vector2 knockbackMultiplier)
+    {
+        this.damage = damage;
+        this.staticKnockback = staticKnockback;
+        this.knockbackMultiplier = knockbackMultiplier;
     }
 }

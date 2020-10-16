@@ -5314,7 +5314,7 @@ Transform:
   m_GameObject: {fileID: 1233575735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.1317275, y: -10.813351, z: 101.35661}
-  m_LocalScale: {x: 57.232, y: 1, z: 1}
+  m_LocalScale: {x: 1e+14, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 503462742}
   m_RootOrder: 1
@@ -9010,6 +9010,14 @@ PrefabInstance:
     - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: bulletLifespan
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: staticKnockback.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: knockbackMultiplier.x
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 276276348312572508, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_LocalScale.x
