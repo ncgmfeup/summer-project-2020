@@ -74,9 +74,9 @@ public class ShootGun : MonoBehaviour
         currentGunCd -= Time.deltaTime;
         bool autoFire = gunScript.GetAutoFire();
 
-
         if (((!autoFire && Input.GetButtonDown(fireButtonName)) || (autoFire && Input.GetButton(fireButtonName))) && currentGunCd <= 0f)
         {
+            GetComponent<ReloadBar>().EndReload();
             bool result;
             gunScript.ShootBullet();
             if (gunScript.GetAmmo() == 1)
@@ -154,12 +154,12 @@ public class ShootGun : MonoBehaviour
         }
         weaponController temp = getCorrectGunScript();
         onSwapWeapon.Invoke(temp.GetAmmo(), temp.GetClipSize(), temp.GetRemainingClips(), temp.GetAutoFire());
+        GetComponent<ReloadBar>().EndReload();
     }
 
     public void setGunScript(weaponController gun)
     {
         currentGunScript = gun;
-
         currentGunScript.transform.localRotation = Quaternion.Euler(Vector3.zero);
         if (rotateWeapon) ChangeWeaponDirection();
     }

@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8699141c2ee14414abc21618d58c842a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extra_position: {x: 0, y: 0.5}
+  extra_position: {x: 0, y: 0.2}
   sprite: {fileID: 0}
 --- !u!50 &276276348373332426
 Rigidbody2D:
