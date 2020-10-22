@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 60957267}
   - component: {fileID: 60957266}
   m_Layer: 5
-  m_Name: 'Teresa Coroado '
+  m_Name: 'Teresa Corado '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Teresa Coroado
+  m_Text: Teresa Corado
 --- !u!222 &60957267
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1400,7 +1400,7 @@ GameObject:
   - component: {fileID: 410937394}
   - component: {fileID: 410937393}
   m_Layer: 5
-  m_Name: Teresa Coroado
+  m_Name: Teresa Corado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1458,7 +1458,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Teresa Coroado
+  m_Text: Teresa Corado
 --- !u!222 &410937394
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1667,7 +1667,7 @@ GameObject:
   - component: {fileID: 527600584}
   - component: {fileID: 527600583}
   m_Layer: 5
-  m_Name: Teresa Coroado
+  m_Name: Teresa Corado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1725,7 +1725,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Teresa Coroado
+  m_Text: Teresa Corado
 --- !u!222 &527600584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1825,7 +1825,7 @@ GameObject:
   - component: {fileID: 581168708}
   - component: {fileID: 581168707}
   m_Layer: 5
-  m_Name: Joao Cardoso (1)
+  m_Name: 'Joao Cardoso '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3193,7 +3193,7 @@ GameObject:
   - component: {fileID: 1264974536}
   - component: {fileID: 1264974535}
   m_Layer: 5
-  m_Name: "V\xEDtor Magalh\xE3es  (1)"
+  m_Name: "V\xEDtor Magalh\xE3es "
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4302,7 +4302,7 @@ GameObject:
   - component: {fileID: 1491277901}
   - component: {fileID: 1491277900}
   m_Layer: 5
-  m_Name: Teresa Coroado
+  m_Name: Teresa Corado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4360,7 +4360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Teresa Coroado
+  m_Text: Teresa Corado
 --- !u!222 &1491277901
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5449,7 +5449,7 @@ GameObject:
   - component: {fileID: 1844526304}
   - component: {fileID: 1844526303}
   m_Layer: 5
-  m_Name: Teresa Coroado
+  m_Name: Teresa Corado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5507,7 +5507,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Teresa Coroado
+  m_Text: Teresa Corado
 --- !u!222 &1844526304
 CanvasRenderer:
   m_ObjectHideFlags: 0
