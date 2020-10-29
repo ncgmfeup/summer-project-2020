@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wall_Perk_Health : MonoBehaviour
 {
     [SerializeField]
-    float HP = 0.23f;
+    float HP = 0.1f;
 
 
     public void SubtractHealth(float number)

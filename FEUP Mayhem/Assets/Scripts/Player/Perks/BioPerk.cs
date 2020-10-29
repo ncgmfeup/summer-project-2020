@@ -13,10 +13,10 @@ public class BioPerk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        specs = GetComponent<PlayerSpecs>();                                    //
-        playerTransform = GetComponent<Transform>();                            //
-        playerCollider = GetComponent<Collider2D>();                            //  gets stuff
-        poisonCloudPrefab = Resources.Load<GameObject>("Prefabs/cloud");        //
+        specs = GetComponent<PlayerSpecs>();
+        playerTransform = GetComponent<Transform>();
+        playerCollider = GetComponent<Collider2D>();
+        poisonCloudPrefab = Resources.Load<GameObject>("Prefabs/cloud");
         StartCoroutine(Perk());
     }
     
@@ -30,7 +30,7 @@ public class BioPerk : MonoBehaviour
                 PoisonCloud spawnedCloud = instantiatedCloud.GetComponent<PoisonCloud>();                                           //gets reference to the cloud's PoisonCloud object
                 spawnedCloud.spawnerName = this.gameObject.name;                                                                    //changes the spawnerName name in the cloud's script
 
-                yield return new WaitForSeconds(cooldown);          //waits for perk cooldown
+                yield return new WaitForSeconds(cooldown);          // Waits for perk cooldown
             }
             else
             {

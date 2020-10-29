@@ -11,12 +11,6 @@ public class PlatformExit : MonoBehaviour
         playerMovScript = transform.parent.gameObject.GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         //Debug.Log("A");

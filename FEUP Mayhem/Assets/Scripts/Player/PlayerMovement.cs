@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 vel = Vector2.zero;
     float n = 1;
 
-
     Vector2 bottomLeft;
     Vector2 topRight;
 
@@ -56,12 +55,10 @@ public class PlayerMovement : MonoBehaviour
 
     public string playerName;
 
-
     // Start is called before the first frame update
     void Start()
     {
         playerCol = gameObject.GetComponent<BoxCollider2D>();
-
         specs = GetComponent<PlayerSpecs>();
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
@@ -71,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
         landSound = GameObject.Find(soundPrefix + "Land").GetComponent<AudioSource>();
         collisionSound = GameObject.Find(soundPrefix + "Collision").GetComponent<AudioSource>();
         AddCharacterName();
-
     }
 
     private void Update()
@@ -200,7 +196,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     private void JumpDownPlatform(Collider2D[] col)
     {
         for (int i = 0; i < col.Length; i++)
@@ -261,7 +256,6 @@ public class PlayerMovement : MonoBehaviour
             landSound.Play();
         }
     }
-
 
     void AddCharacterName(){
         characterNameText = new GameObject("player_label");          
