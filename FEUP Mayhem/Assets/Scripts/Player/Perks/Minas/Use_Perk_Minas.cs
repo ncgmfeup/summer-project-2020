@@ -20,12 +20,15 @@ public class Use_Perk_Minas : MonoBehaviour
     float offset_x_times_wall_size = 2f;
 
     bool canUseWall = true;
+
     // Start is called before the first frame update
     void Start()
     {
         perkButtonName = GetComponent<PlayerSpecs>().PerkButtonName();
         wallPrefab = Resources.Load<GameObject>("Prefabs/Wall_Perk");
-        delta_y = wallPrefab.GetComponent<BoxCollider2D>().size.y / 2f * wallPrefab.transform.localScale.y;
+        delta_y = wallPrefab.GetComponent<BoxCollider2D>().size.y
+                  / 2f
+                  * wallPrefab.transform.localScale.y;
         offset_x_times_wall_size *= wallPrefab.GetComponent<BoxCollider2D>().size.x;
     }
 
@@ -34,19 +37,18 @@ public class Use_Perk_Minas : MonoBehaviour
     {
         if (Input.GetButtonDown(perkButtonName))
         {
-            if(wall == null && canUseWall) //Constrói a parede
+            if(wall == null && canUseWall) // Builds wall
             {
                 raycast = Physics2D.Raycast(transform.position + new Vector3(offset_x_times_wall_size, 0, 0), new Vector2(0, -1), Mathf.Infinity, LayerMask.GetMask(layers));
                 wall = Instantiate(wallPrefab, new Vector3(transform.position.x + offset_x_times_wall_size * (((int) transform.rotation.eulerAngles.y % 179) - 0.5f) * -2f , raycast.collider.transform.position.y + delta_y, transform.position.z), Quaternion.identity);
                 StartCoroutine(Cooldown());
             }
-            else if(wall != null) //Destroi a parede
+            else if(wall != null) // Destroys wall
             {
                 Destroy(wall);
             }
         } 
     }
-
 
     IEnumerator Cooldown()
     {
