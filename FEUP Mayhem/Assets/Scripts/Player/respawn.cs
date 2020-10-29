@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class respawn : MonoBehaviour
 {
-    [SerializeField] private Transform respawnPoint;            //holds reference to the respawn point transform
+    [SerializeField] private Transform respawnPoint = null;            //holds reference to the respawn point transform
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
