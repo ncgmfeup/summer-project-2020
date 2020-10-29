@@ -9021,11 +9021,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 276276348312572508, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 276276348312572508, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 276276348312572508, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_LocalScale.z
@@ -9033,7 +9033,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 276276348312572508, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 276276348312572508, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 276276348373332420, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_Offset.y
@@ -9224,6 +9228,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 863488624574794924, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 863488624574794924, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 863488624574794924, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 863488624574794924, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 7637583668806234000, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: m_Name
       value: Player 2
