@@ -109,6 +109,7 @@ public class weaponController : MonoBehaviour
                 thisBullet = Instantiate(bulletPrefab, weaponTransform.position + new Vector3(GunOffset.x, GunOffset.y, GunOffset.z), weaponTransform.rotation);
             }
             bulletController bulletController = thisBullet.GetComponent<bulletController>();
+            bulletController.SetDamageAndKnockback(damage, staticKnockback, knockbackMultiplier);
             bulletController.SetBulletForce(bulletForce);
             bulletController.SetPlayer(gameObject.transform.parent.gameObject);
             Destroy(thisBullet, bulletLifespan);

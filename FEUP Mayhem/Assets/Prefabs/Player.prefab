@@ -431,14 +431,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 276276348373332425}
     m_Modifications:
-    - target: {fileID: 7063227194065735841, guid: 42e0cd075e8b0364fb74c91bd5eaed5a, type: 3}
-      propertyPath: bulletForce
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063227194065735841, guid: 42e0cd075e8b0364fb74c91bd5eaed5a, type: 3}
-      propertyPath: GunOffset.y
-      value: 0.1666666
-      objectReference: {fileID: 0}
     - target: {fileID: 7063227194065735868, guid: 42e0cd075e8b0364fb74c91bd5eaed5a, type: 3}
       propertyPath: m_Name
       value: DefaultGun

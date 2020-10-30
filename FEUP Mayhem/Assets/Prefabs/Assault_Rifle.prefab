@@ -202,9 +202,9 @@ MonoBehaviour:
   burst_max_angle: 0
   weaponTransform: {fileID: 141280320513858568}
   bulletPrefab: {fileID: 3946667744556925657, guid: a608a40ea798a2840bae257901f9f053, type: 3}
-  damage: 0.02
+  damage: 0.009
   staticKnockback: {x: 1, y: 1}
-  knockbackMultiplier: {x: 0.5, y: 1}
+  knockbackMultiplier: {x: 0.35, y: 0.35}
 --- !u!61 &-4843058967233077032
 BoxCollider2D:
   m_ObjectHideFlags: 0
