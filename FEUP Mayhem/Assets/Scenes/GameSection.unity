@@ -4578,6 +4578,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 5078515265280675847, guid: 0c080457ae896a84a910bb092f9cda98, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8880989191541718856, guid: 0c080457ae896a84a910bb092f9cda98, type: 3}
       propertyPath: m_Name
       value: Platform

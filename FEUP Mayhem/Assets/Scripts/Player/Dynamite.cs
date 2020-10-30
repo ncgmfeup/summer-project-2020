@@ -14,7 +14,12 @@ public class Dynamite : MonoBehaviour
     {
         GameObject player = GameObject.FindWithTag("Player");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        GetComponent<Rigidbody2D>().AddForce(Vector3.up * 6f, ForceMode2D.Impulse);
+
+        int playerRotation = 1;
+        if (player.transform.eulerAngles.y == 180)
+            playerRotation = -1;
+
+        GetComponent<Rigidbody2D>().AddForce(new Vector3(playerRotation, 1) * 5f, ForceMode2D.Impulse);
         Invoke("Detonate", explosionTime);
     }
 
