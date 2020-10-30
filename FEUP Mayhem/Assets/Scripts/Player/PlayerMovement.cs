@@ -212,6 +212,11 @@ public class PlayerMovement : MonoBehaviour
         return multiplier;
     }
 
+    public void SetMultiplier(double multiplier)
+    {
+        this.multiplier = multiplier;
+    }
+
     public void stun()
     {
         moveEnabled = false;

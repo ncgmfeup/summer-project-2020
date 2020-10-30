@@ -12,6 +12,7 @@ public class respawn : MonoBehaviour
         {
             StartCoroutine(WaitToMove(collision.transform));        //starts coroutine and passes the collided tranform to it
             collision.gameObject.GetComponent<HP>().death();
+            collision.gameObject.GetComponent<PlayerMovement>().SetMultiplier(0.01);
         }
     }
 
