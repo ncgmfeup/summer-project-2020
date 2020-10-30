@@ -9035,30 +9035,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
-      propertyPath: bulletForce
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
-      propertyPath: bulletLifespan
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
-      propertyPath: staticKnockback.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
-      propertyPath: knockbackMultiplier.x
-      value: 0.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
-      propertyPath: GunOffset.x
-      value: 1.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 276276348312572482, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
-      propertyPath: GunOffset.y
-      value: -0.08
-      objectReference: {fileID: 0}
     - target: {fileID: 276276348312572508, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7
@@ -9283,14 +9259,6 @@ PrefabInstance:
     - target: {fileID: 863488624574794924, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 863488624574794930, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
-      propertyPath: GunOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 863488624574794930, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
-      propertyPath: GunOffset.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7637583668806234000, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: m_Name
