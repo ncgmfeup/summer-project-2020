@@ -89,8 +89,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Jump
             if (Input.GetButtonDown(specs.JumpButtonName()))
-            {
-                
+            {                
                 if (canJump)
                 {
                     isJumping = true;

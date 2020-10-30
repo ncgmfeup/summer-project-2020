@@ -21,7 +21,6 @@ public class OnStartEvent : UnityEvent<int, int, int, bool>
 {
 }
 
-[RequireComponent(typeof(PlayerSpecs))]
 public class ShootGun : MonoBehaviour
 {
 
@@ -43,10 +42,7 @@ public class ShootGun : MonoBehaviour
     weaponController gunScriptLastFrame;
     //---
 
-    //Input related
-    private string fireButtonName = "Fire1";
-    //---
-
+    private PlayerSpecs specs;
 
     float currentGunCd = 0;
 
@@ -60,7 +56,7 @@ public class ShootGun : MonoBehaviour
         gunScriptLastFrame = getCorrectGunScript();
         UpdateUsedGun(currentGunScript != null);
 
-        fireButtonName = GetComponent<PlayerSpecs>().FireButtonName();
+        specs = GetComponent<PlayerSpecs>();
 
         onStart.Invoke(gunScriptLastFrame.GetAmmo(), gunScriptLastFrame.GetClipSize(), gunScriptLastFrame.GetRemainingClips(), gunScriptLastFrame.GetAutoFire());
     }
@@ -74,7 +70,7 @@ public class ShootGun : MonoBehaviour
         currentGunCd -= Time.deltaTime;
         bool autoFire = gunScript.GetAutoFire();
 
-        if (((!autoFire && Input.GetButtonDown(fireButtonName)) || (autoFire && Input.GetButton(fireButtonName))) && currentGunCd <= 0f)
+        if (((!autoFire && Input.GetButtonDown(specs.FireButtonName())) || (autoFire && Input.GetButton(specs.FireButtonName()))) && currentGunCd <= 0f)
         {
             GetComponent<ReloadBar>().EndReload();
             bool result;

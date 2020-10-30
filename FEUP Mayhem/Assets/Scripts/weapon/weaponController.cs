@@ -8,7 +8,6 @@ public class weaponController : MonoBehaviour
     // - Fazer as armas dropar
     // - Alocar balas quando a arma é apanhada (Probably not doing this)
 
-
     //Propriedades das balas
     [SerializeField]
     float bulletForce = 500f;
@@ -23,7 +22,6 @@ public class weaponController : MonoBehaviour
     [SerializeField]
     float maxReloadCd = 2f;
     //float gunCd = 0f;
-
 
     [SerializeField]
     bool autoFire = false;
@@ -44,13 +42,8 @@ public class weaponController : MonoBehaviour
     [SerializeField]
     int burst_max_angle = 20;
 
-
-    //--
-
     public Transform weaponTransform;
     public GameObject bulletPrefab;
-
-
 
     //DAMAGE
     [SerializeField]
@@ -69,10 +62,6 @@ public class weaponController : MonoBehaviour
         remainingClips = numClips;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
     public bool GetAutoFire()
     {
         return autoFire;
