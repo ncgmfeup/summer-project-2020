@@ -488,6 +488,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointer: {fileID: 259046724}
+--- !u!114 &31404974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 276276348373332424, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+  m_PrefabInstance: {fileID: 276276349843568178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31404965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7f8235592b4a240b83d6b572093f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &31404975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7459,6 +7470,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointer: {fileID: 240185149}
+--- !u!114 &1745277075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7637583668806234006, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+  m_PrefabInstance: {fileID: 7637583669101241688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745277066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7f8235592b4a240b83d6b572093f9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1745277076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9223,6 +9245,10 @@ PrefabInstance:
       propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 1707311146}
+    - target: {fileID: 276276348373332430, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: specs
+      value: 
+      objectReference: {fileID: 31404974}
     - target: {fileID: 3913252318467309130, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: m_Controller
       value: 
@@ -9372,6 +9398,10 @@ PrefabInstance:
       propertyPath: onShootingEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdateImage
       objectReference: {fileID: 0}
+    - target: {fileID: 7637583668806234004, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: specs
+      value: 
+      objectReference: {fileID: 1745277075}
     - target: {fileID: 7637583668806234005, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: moveSpeed
       value: 5

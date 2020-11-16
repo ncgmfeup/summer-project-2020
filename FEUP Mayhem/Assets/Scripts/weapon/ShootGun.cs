@@ -42,6 +42,7 @@ public class ShootGun : MonoBehaviour
     weaponController gunScriptLastFrame;
     //---
 
+    [SerializeField]
     private PlayerSpecs specs;
 
     float currentGunCd = 0;
@@ -55,8 +56,6 @@ public class ShootGun : MonoBehaviour
     {
         gunScriptLastFrame = getCorrectGunScript();
         UpdateUsedGun(currentGunScript != null);
-
-        specs = GetComponent<PlayerSpecs>();
 
         onStart.Invoke(gunScriptLastFrame.GetAmmo(), gunScriptLastFrame.GetClipSize(), gunScriptLastFrame.GetRemainingClips(), gunScriptLastFrame.GetAutoFire());
     }
@@ -121,9 +120,7 @@ public class ShootGun : MonoBehaviour
 
 
         weaponController tmp = getCorrectGunScript();
-        //Debug.Log(tmp.GetRemainingClips());
 
-        //Debug.Log(currentGunCd > -Time.deltaTime && currentGunCd < 0f && tmp.GetAmmo() == 0);
         if (currentGunCd > -Time.deltaTime && currentGunCd < 0f && tmp.GetAmmo() == tmp.GetClipSize())
         {
             GetComponent<ReloadBar>().EndReload();
