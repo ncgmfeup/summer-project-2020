@@ -15,8 +15,13 @@ public class HP : MonoBehaviour
     [SerializeField]
     public GameObject buttons;
 
+    [SerializeField]
+    private GameManager gameManager = null;
+
     private AudioSource victorySound;
     private AudioSource music;
+
+    private string playerName;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +31,8 @@ public class HP : MonoBehaviour
         livesText.text = nLivesString;
         victorySound = GameObject.Find("/Audio Objects/SFX/Victory").GetComponent<AudioSource>();
         music = GameObject.Find("/Audio Objects/Music").GetComponent<AudioSource>();
+
+        playerName = GetComponent<PlayerMovement>().playerName;
     }
 
     public void death()
@@ -55,5 +62,10 @@ public class HP : MonoBehaviour
         p1.SetActive(false);
         p2.SetActive(false);
 
+        // Get the winning character
+        string winningCharacter = "Player 1";
+        if (playerName == winningCharacter)
+            winningCharacter = "Player 2";
+        gameManager.SetWinningCharacterAnimation(winningCharacter);
     }
 }

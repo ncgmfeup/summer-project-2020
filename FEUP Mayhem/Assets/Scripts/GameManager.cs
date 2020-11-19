@@ -16,6 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int eletroIndex = 1;
 
+    [SerializeField]
+    private List<string> idleSpritesFolder = null;
+
+    private string spritesP1, spritesP2;
+
+    [SerializeField]
+    private WinnerImageAnimation winnerImageAnimation = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +38,7 @@ public class GameManager : MonoBehaviour
 
         player1.AddComponent(Type.GetType(charactersPerks[index1]));
 
+        spritesP1 = idleSpritesFolder[index1];
 
         // PLAYER 2
 
@@ -41,5 +50,27 @@ public class GameManager : MonoBehaviour
         if (index2 == eletroIndex) player2.AddComponent<Glitch>();
 
         player2.AddComponent(Type.GetType(charactersPerks[index2]));
+
+        spritesP2 = idleSpritesFolder[index1];
+    }
+
+    public void SetWinningCharacterAnimation(string winningCharacter)
+    {
+        string folder;
+        if(winningCharacter == "Player 1")
+        {
+            folder = "IdleSprites/" + spritesP1;
+        }
+        else
+        {
+            folder = "IdleSprites/" + spritesP2;
+        }
+
+        List<Sprite> sprites = new List<Sprite>();
+        foreach(UnityEngine.Object obj in Resources.LoadAll(folder, typeof(Sprite))) {
+            sprites.Add((Sprite)obj);
+        }
+
+        winnerImageAnimation.SetIdleSprites(sprites);
     }
 }
