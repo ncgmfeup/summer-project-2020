@@ -273,4 +273,9 @@ public class PlayerMovement : MonoBehaviour
         tm.characterSize = 0.065f;
         tm.fontSize = 60;
     }
+
+    private void OnDisable()
+    {
+        characterNameText.SetActive(false);
+    }
 }
