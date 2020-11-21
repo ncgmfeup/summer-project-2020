@@ -39,13 +39,13 @@ public class outOfBounds : MonoBehaviour
 
     private void OnDisable()
     {
-        pointer.SetActive(false);
+        pointer?.SetActive(false);
         isVisible = false;
     }
 
     private void OnBecameInvisible()        //when object leaves the camera bounds
     {
-        pointer.SetActive(true);    //pointer becomes active
+        pointer?.SetActive(true);    //pointer becomes active
         isVisible = false;          //player is not visible anymore
     }
 
