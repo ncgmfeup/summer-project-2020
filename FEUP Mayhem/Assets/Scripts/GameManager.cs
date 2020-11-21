@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private WinnerImageAnimation winnerImageAnimation = null;
 
+    private bool changeColor = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,15 +54,25 @@ public class GameManager : MonoBehaviour
         player2.AddComponent(Type.GetType(charactersPerks[index2]));
 
         spritesP2 = idleSpritesFolder[index2];
+
+        if(index1 == index2)
+        {
+            SpriteRenderer sp2 = player2.GetComponent<SpriteRenderer>();
+            sp2.color = new Color(.5f, .5f, .5f);
+
+            changeColor = true;
+        }
     }
 
     public void SetWinningCharacterAnimation(string winningCharacter)
     {
         string folder;
         bool rotateImage;
+        bool color = changeColor;
 
         if(winningCharacter == "Player 1")
         {
+            color = false;
             rotateImage = false;
             folder = "IdleSprites/" + spritesP1;
         }
@@ -75,6 +87,6 @@ public class GameManager : MonoBehaviour
             sprites.Add((Sprite)obj);
         }
 
-        winnerImageAnimation.SetIdleSprites(sprites, rotateImage);
+        winnerImageAnimation.SetIdleSprites(sprites, rotateImage, color);
     }
 }
