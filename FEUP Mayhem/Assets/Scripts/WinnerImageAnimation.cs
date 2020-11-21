@@ -11,12 +11,17 @@ public class WinnerImageAnimation : MonoBehaviour
     private float animationTime = .5f;
 
     [SerializeField]
-    private Image image; 
+    private Image image = null; 
 
-    public void SetIdleSprites(List<Sprite> sprites, bool rotateImage = false)
+    public void SetIdleSprites(List<Sprite> sprites, bool rotateImage = false, bool changeColor = false)
     {
         idleSprites = sprites;
         StopAllCoroutines();
+
+        if (changeColor)
+        {
+            image.color = new Color(.5f, .5f, .5f);
+        }
 
         if (rotateImage)
         {
