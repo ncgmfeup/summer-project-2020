@@ -51,18 +51,22 @@ public class GameManager : MonoBehaviour
 
         player2.AddComponent(Type.GetType(charactersPerks[index2]));
 
-        spritesP2 = idleSpritesFolder[index1];
+        spritesP2 = idleSpritesFolder[index2];
     }
 
     public void SetWinningCharacterAnimation(string winningCharacter)
     {
         string folder;
+        bool rotateImage;
+
         if(winningCharacter == "Player 1")
         {
+            rotateImage = false;
             folder = "IdleSprites/" + spritesP1;
         }
         else
         {
+            rotateImage = true;
             folder = "IdleSprites/" + spritesP2;
         }
 
@@ -71,6 +75,6 @@ public class GameManager : MonoBehaviour
             sprites.Add((Sprite)obj);
         }
 
-        winnerImageAnimation.SetIdleSprites(sprites);
+        winnerImageAnimation.SetIdleSprites(sprites, rotateImage);
     }
 }
