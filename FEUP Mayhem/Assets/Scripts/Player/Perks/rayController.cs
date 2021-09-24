@@ -31,6 +31,7 @@ public class rayController : MonoBehaviour
                     enemy = collision.gameObject.GetComponent<PlayerMovement>();
                     enemy.stun();
                     Destroy(this.gameObject);
+                    return;
                 }
             }
         }
