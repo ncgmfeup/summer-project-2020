@@ -2475,6 +2475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7193ee1b7e5a544a7dbb8432ace917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSourceScene: GameSection
 --- !u!82 &439973952
 AudioSource:
   m_ObjectHideFlags: 0
