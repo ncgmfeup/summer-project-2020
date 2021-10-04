@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Credits : MonoBehaviour
@@ -13,7 +11,8 @@ public class Credits : MonoBehaviour
         fadeOut.SetActive(true);
     }
 
-    void ExitCredits(){
+    public void ExitCredits()
+    {
         SceneManager.LoadScene("MainMenu");
     }
 }
