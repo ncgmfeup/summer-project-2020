@@ -77,7 +77,7 @@ public class ShootGun : MonoBehaviour
             if (gunScript.GetAmmo() == 1)
             {
                 currentGunCd = gunScript.GetMaxReloadCd();
-                GetComponent<ReloadBar>().StartReloading();
+                GetComponent<ReloadBar>().StartReloading(currentGunCd);
                 GameObject.Find("/Audio Objects/SFX/Reload").GetComponent<AudioSource>().Play();
 
             }

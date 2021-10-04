@@ -9352,6 +9352,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9b583e3a5cb9bfc459e6e809c1587eba, type: 2}
+    - target: {fileID: 4962551399824454023, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911151448411792931, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7287365816673067001, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: sprite
       value: 
@@ -9359,6 +9367,18 @@ PrefabInstance:
     - target: {fileID: 7287365816673067001, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
       propertyPath: extra_position.y
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287365816673067001, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: reloadBarFill
+      value: 
+      objectReference: {fileID: 238967654144072452, guid: bf253e6f03fce9949b95ea24c54de8af, type: 3}
+    - target: {fileID: 7287365816673067001, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: load_bar_offset.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134201405576710142, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 033a1985d86f9d54fbe38459599feb2e, type: 3}
@@ -9384,6 +9404,14 @@ PrefabInstance:
     - target: {fileID: 863488624574794924, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2979478228459101983, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964986781519917558, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7637583668806234000, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: m_Name
@@ -9581,6 +9609,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 8134201405576710142, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9101432741659966351, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: sprite
       value: 
@@ -9588,6 +9620,14 @@ PrefabInstance:
     - target: {fileID: 9101432741659966351, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
       propertyPath: extra_position.y
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101432741659966351, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: reloadBarFill
+      value: 
+      objectReference: {fileID: 238967654144072452, guid: bf253e6f03fce9949b95ea24c54de8af, type: 3}
+    - target: {fileID: 9101432741659966351, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
+      propertyPath: load_bar_offset.x
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2d18529be5bb644987385f32b40ea06, type: 3}
